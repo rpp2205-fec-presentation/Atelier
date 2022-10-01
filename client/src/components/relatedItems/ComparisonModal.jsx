@@ -7,7 +7,7 @@ class ComparisonModal extends React.Component {
 
   render() {
     return (<div className='related-products'>
-      <h2>Comparison Modal</h2>
+      <div>Comparison Modal</div>
     </div>)
   }
 }

@@ -1,4 +1,6 @@
 import React from 'react';
+import ComparisonModal from './ComparisonModal.jsx';
+
 
 class ProductCard extends React.Component {
   constructor(props) {
