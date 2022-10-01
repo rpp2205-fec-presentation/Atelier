@@ -1,4 +1,11 @@
 
+import React from 'react';
+import reactDom from 'react-dom';
 
+const Atelier = () => {
+  return (
+    <App />
+  );
+};
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+reactDom.render(<Atelier />, document.getElementById('root'));
