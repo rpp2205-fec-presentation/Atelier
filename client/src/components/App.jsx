@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedItems from './relatedItems/RelatedItems.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class App extends React.Component {
 
   render() {
     return (<div>
-      I LOAD!
+      <RelatedItems />
     </div>)
   }
 }
