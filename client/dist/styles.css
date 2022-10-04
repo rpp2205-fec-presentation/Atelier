@@ -27,14 +27,14 @@
    -webkit-font-smoothing: antialiased;
  }
 
- img,
+ /* img,
  picture,
  video,
  canvas,
  svg {
    display: block;
    max-width: 100%;
- }
+ } */
 
  input,
  button,
@@ -64,4 +64,8 @@
   padding: 10px;
   margin: 5px;
 
+ }
+
+ .stars {
+  display: flex;
  }
