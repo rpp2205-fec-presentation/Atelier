@@ -1,18 +1,17 @@
 require("dotenv").config();
 const axios = require('axios');
 const express = require('express');
+const AUTH_TOKEN = require('../config.js');
 
 const logger = require("./middleware/logger");
-const auth = require("./middleware/auth");
 
 const app = express();
 const port = process.env.PORT;
 
-//app.use(express.json());
-//app.use(express.urlencoded());
+app.use(express.json());
+app.use(express.urlencoded());
 
 app.use(logger);
-app.use(auth);
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.all('*', (req, res, next) => {
@@ -22,7 +21,7 @@ app.all('*', (req, res, next) => {
     method: req.method,
     url: endpoint,
     data: req.body,
-    headers: {Authorization: req.headers.Authorization}
+    headers: {Authorization: AUTH_TOKEN}
   })
   .then(result => {
     res.send(result.data);
