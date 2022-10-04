@@ -1,9 +1,9 @@
-import AUTH_TOKEN from '../../config.js';
+var AUTH_TOKEN = require('../../config.js');
 
 module.exports = (req, res, next) => {
 
-  console.log('HERE I AM');
-  console.log(AUTH_TOKEN);
+  console.log('IN Auth');
+  req.headers.Authentication = AUTH_TOKEN;
 
   next();
 };

@@ -15,8 +15,9 @@ app.use(auth);
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.all(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}/*`, (req, res, next) => {
-  console.log('ALL');
+app.all('*', (req, res, next) => {
+  console.log('URL: ', req.url);
+  console.log('METHOD:', req.method);
   res.send();
 });
 
