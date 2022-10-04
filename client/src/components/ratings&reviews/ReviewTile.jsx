@@ -1,4 +1,5 @@
 import React from 'react';
+import stars from '../Stars.jsx';
 
 class ReviewTile extends React.Component{
   constructor(props) {
@@ -8,7 +9,7 @@ class ReviewTile extends React.Component{
   render() {
     return (
       <div>
-        <h3> Rating: 0/5 </h3>
+        <span>{stars(4.5)}</span>
         <h3> Review Summary </h3>
         <h4> Review Body </h4>
       </div>
