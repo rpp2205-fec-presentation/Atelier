@@ -1,6 +1,3 @@
-var path = require("path");
-var SRC_DIR = path.join(__dirname, "/client/src");
-
 module.exports = {
   roots: ['./test'],
   testMatch: ['**/*.test.(js|jsx)'],
