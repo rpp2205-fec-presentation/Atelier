@@ -12,7 +12,11 @@ class RelatedItems extends React.Component {
   }
 
   testClick() {
-    axios.get('/products')
+    axios({
+      method: 'get',
+      url: '/reviews',
+      params: {product_id: 71698, count: 100},
+    })
     .then(result => {
       console.log(result);
     })

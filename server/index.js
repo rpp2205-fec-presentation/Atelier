@@ -21,7 +21,8 @@ app.all('*', (req, res, next) => {
     method: req.method,
     url: endpoint,
     data: req.body,
-    headers: {Authorization: AUTH_TOKEN}
+    headers: {Authorization: AUTH_TOKEN},
+    params: req.params
   })
   .then(result => {
     res.send(result.data);
