@@ -4,7 +4,6 @@ const express = require('express');
 const logger = require("./middleware/logger");
 const auth = require("./middleware/auth");
 
-
 const app = express();
 const port = process.env.PORT;
 
@@ -16,8 +15,9 @@ app.use(auth);
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.all('*', (req, res, next) => {
-
+app.all(`https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}/*`, (req, res, next) => {
+  console.log('ALL');
+  res.send();
 });
 
 app.listen(port, () => {
