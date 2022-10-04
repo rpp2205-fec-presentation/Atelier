@@ -16,6 +16,10 @@ app.use(auth);
 
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.all('*', (req, res, next) => {
+
+});
+
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 })
