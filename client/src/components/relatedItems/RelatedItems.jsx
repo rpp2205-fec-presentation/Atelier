@@ -1,6 +1,7 @@
 import React from 'react';
 import RelatedProducts from './RelatedProducts.jsx';
 import Outfits from './Outfits.jsx';
+const axios = require('axios');
 
 
 class RelatedItems extends React.Component {
