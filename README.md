@@ -3,6 +3,7 @@ Project Atelier comprises a complete redesign of the retail portal designed to a
 
 # Getting Started
 - [ ] Install dependencies: `npm install`
+- [ ] Make a copy of the config-example.js file and rename it config.js.  Update it with an appropriate github token for authentication
 - [ ] Start webpack: `npm run react-dev`
 - [ ] Start the server: `npm run server-dev`
 - [ ] Open the application in the browser at [link](localhost:3000)
