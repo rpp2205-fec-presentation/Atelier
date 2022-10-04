@@ -7,28 +7,11 @@ const axios = require('axios');
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
-
-    this.testClick = this.testClick.bind(this);
-  }
-
-  testClick() {
-    axios({
-      method: 'get',
-      url: '/reviews',
-      params: {product_id: 71698, count: 100},
-    })
-    .then(result => {
-      console.log(result);
-    })
-    .catch(err => {
-      console.log(err);
-    })
   }
 
   render() {
     return (<div>
       <h1>Related Items and Comparison</h1>
-      <button onClick={this.testClick}>SAMPLE API CALL TO PRODUCTS</button>
       <RelatedProducts />
       <Outfits />
     </div>)
