@@ -10,7 +10,7 @@ class ReviewTile extends React.Component{
   render() {
     return (
       <div>
-        <div className="stars">{stars(3.75)}</div>
+        <div>{stars(3.75)}</div>
         <h3> Review Summary </h3>
         <h4> Review Body </h4>
       </div>
