@@ -1,5 +1,8 @@
 import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
+import stars from '../helpers/stars.js';
+import calculateAverageRating from '../helpers/calculateAverageRating.js';
+
 const axios = require('axios');
 
 class ProductCard extends React.Component {
@@ -32,21 +35,10 @@ class ProductCard extends React.Component {
       productCategory = result.data.category;
       productName = result.data.name;
 
-      return axios({
-        method: 'get',
-        url: `/reviews/meta`,
-        params: {product_id: this.state.productId}
-      })
+      return calculateAverageRating(this.state.productId)
     })
     .then(result => {
-      var ratings = result.data.ratings;
-
-      for(var i = 1; i <= 5; i++) {
-        starRating += i * parseInt(ratings[i], 10);
-        numRatings += parseInt(ratings[i], 10)
-      }
-
-      starRating = starRating / numRatings;
+      starRating = result;
 
       return axios({
         method: 'get',
@@ -75,8 +67,7 @@ class ProductCard extends React.Component {
         originalPrice,
         isOnSale,
         salesPrice,
-        starRating,
-        numRatings
+        starRating
       });
     })
     .catch(err => {
@@ -86,17 +77,16 @@ class ProductCard extends React.Component {
 
   render() {
     return (<div className='product-card'>
-      <h3>Product Card</h3>
-      <div>Product Information
+      <h3>Product Information</h3>
+      <div>
         <ul>
           <li>{this.state.productCategory}</li>
           <li>{this.state.productName}</li>
-          <li>{this.state.starRating}</li>
-          <li>{this.state.numRatings}</li>
           <li>{this.state.originalPrice}</li>
           <li>{this.state.isOnSale}</li>
           <li>{this.state.salesPrice}</li>
         </ul>
+        RATING: {stars(this.state.starRating)}
       </div>
     </div>)
   }
