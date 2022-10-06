@@ -18,7 +18,8 @@ class ProductCard extends React.Component {
   }
 
   componentDidMount() {
-    var productCategory, productName, originalPrice, isOnSale, salesPrice;
+    var productCategory, productName, originalPrice, isOnSale;
+    var salesPrice = 0;
     var starRating = 0;
     var numRatings = 0;
 
@@ -30,7 +31,6 @@ class ProductCard extends React.Component {
     .then(result => {
       productCategory = result.data.category;
       productName = result.data.name;
-      originalPrice = result.data.default_price;
 
       return axios({
         method: 'get',
@@ -48,6 +48,36 @@ class ProductCard extends React.Component {
 
       starRating = starRating / numRatings;
 
+      return axios({
+        method: 'get',
+        url: `/products/${this.state.productId}/styles`,
+        params: {product_id: this.state.productId}
+      })
+    })
+    .then(result => {
+      var haveFoundDefault = false;
+      var styles = result.data.results;
+
+      for (var style of styles) {
+        if (style['default?']) {
+          originalPrice = style.original_price;
+          if (style.sale_price !== null) {
+            isOnSale = true;
+            salesPrice = style.sale_price;
+            break;
+          }
+        }
+      }
+
+      this.setState({
+        productCategory,
+        productName,
+        originalPrice,
+        isOnSale,
+        salesPrice,
+        starRating,
+        numRatings
+      });
     })
     .catch(err => {
       console.log(err);
@@ -57,6 +87,17 @@ class ProductCard extends React.Component {
   render() {
     return (<div className='product-card'>
       <h3>Product Card</h3>
+      <div>Product Information
+        <ul>
+          <li>{this.state.productCategory}</li>
+          <li>{this.state.productName}</li>
+          <li>{this.state.starRating}</li>
+          <li>{this.state.numRatings}</li>
+          <li>{this.state.originalPrice}</li>
+          <li>{this.state.isOnSale}</li>
+          <li>{this.state.salesPrice}</li>
+        </ul>
+      </div>
     </div>)
   }
 }
