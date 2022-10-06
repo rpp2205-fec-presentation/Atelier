@@ -65,3 +65,8 @@
   margin: 5px;
 
  }
+
+ .tile {
+  border: 1px solid;
+  padding: 10px;
+ }

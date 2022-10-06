@@ -21,7 +21,7 @@ class ReviewsList extends React.Component{
     axios({
       method: 'get',
       url: '/reviews/',
-      params: {product_id: 72000, count: 100},
+      params: {product_id: 71698, count: 100},
     })
     .then(reviews => {
       console.log(reviews.data.results);
