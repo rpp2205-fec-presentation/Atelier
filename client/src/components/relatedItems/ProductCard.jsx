@@ -9,19 +9,19 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 71698,
+      productId: 71697,
       productCategory: '',
       productName: '',
       originalPrice: 0,
       starRating: 0,
-      numRatings: 0,
       isOnSale: false,
-      salesPrice: 0
+      salesPrice: 0,
+      imgUrl: ''
     }
   }
 
   componentDidMount() {
-    var productCategory, productName, originalPrice, isOnSale;
+    var productCategory, productName, originalPrice, isOnSale, imgUrl;
     var salesPrice = 0;
     var starRating = 0;
     var numRatings = 0;
@@ -53,6 +53,7 @@ class ProductCard extends React.Component {
       for (var style of styles) {
         if (style['default?']) {
           originalPrice = style.original_price;
+          imgUrl = style.photos[0].url;
           if (style.sale_price !== null) {
             isOnSale = true;
             salesPrice = style.sale_price;
@@ -67,7 +68,8 @@ class ProductCard extends React.Component {
         originalPrice,
         isOnSale,
         salesPrice,
-        starRating
+        starRating,
+        imgUrl
       });
     })
     .catch(err => {
@@ -79,14 +81,14 @@ class ProductCard extends React.Component {
     return (<div className='product-card'>
       <h3>Product Information</h3>
       <div>
-        <ul>
-          <li>{this.state.productCategory}</li>
-          <li>{this.state.productName}</li>
-          <li>{this.state.originalPrice}</li>
-          <li>{this.state.isOnSale}</li>
-          <li>{this.state.salesPrice}</li>
-        </ul>
-        RATING: {stars(this.state.starRating)}
+        <img id='riImage' src={this.state.imgUrl} alt='product image'></img>
+      </div>
+      <div id='riProductInfo'>
+        <div id='riCategory'>{this.state.productCategory}</div>
+        <div id='riProductName'>{this.state.productName}</div>
+        <div id='riOriginalPrice'>{this.state.originalPrice}</div>
+        <div id='riSalesPrice'>{this.state.salesPrice}</div>
+        <div>{stars(this.state.starRating)}</div>
       </div>
     </div>)
   }
