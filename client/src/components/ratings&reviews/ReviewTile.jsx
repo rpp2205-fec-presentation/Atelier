@@ -1,5 +1,5 @@
 import React from 'react';
-import stars from '../Stars.jsx';
+import stars from '../helpers/stars.js';
 import axios from 'axios';
 
 class ReviewTile extends React.Component{
