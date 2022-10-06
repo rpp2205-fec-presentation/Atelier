@@ -59,11 +59,21 @@
    margin: auto;
  }
 
- #related-products {
-  background-color: darkgray;
+ /* RELATED ITEMS AND COMPARISON FORMATTING */
+
+ #related-items-and-comparisons{
+  background-color: lightgrey;
+  padding: 10px;
+  margin: 5px;
  }
 
- #product-card {
+ #related-products, #outfits {
+  background-color: darkgray;
+  margin: 10px;
+  padding: 10px;
+ }
+
+ #product-card, #related-items-and-comparisons{
   display: inline-block;
   background-color: lightgrey;
   padding: 10px;
