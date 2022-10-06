@@ -59,9 +59,38 @@
    margin: auto;
  }
 
- .product-card {
+ #related-products {
+  background-color: darkgray;
+ }
+
+ #product-card {
+  display: inline-block;
   background-color: lightgrey;
   padding: 10px;
   margin: 5px;
+ }
 
+ #ri-product-info {
+  background-color: beige;
+ }
+
+ #ri-image-block {
+  text-align: center;
+ }
+
+ #ri-image {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+ }
+
+ #ri-category, #ri-original-price {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+ }
+
+ #ri-product-name {
+  font-weight: bold;
+  font-size: 16px;
  }

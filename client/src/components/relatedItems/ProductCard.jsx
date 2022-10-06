@@ -78,16 +78,14 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    return (<div className='product-card'>
-      <h3>Product Information</h3>
-      <div>
-        <img id='riImage' src={this.state.imgUrl} alt='product image'></img>
+    return (<div id='product-card'>
+      <div id='ri-image-block'>
+        <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
       </div>
-      <div id='riProductInfo'>
-        <div id='riCategory'>{this.state.productCategory}</div>
-        <div id='riProductName'>{this.state.productName}</div>
-        <div id='riOriginalPrice'>{this.state.originalPrice}</div>
-        <div id='riSalesPrice'>{this.state.salesPrice}</div>
+      <div id='ri-product-info'>
+        <div id='ri-category'>{this.state.productCategory}</div>
+        <div id='ri-product-name'>{this.state.productName}</div>
+        <div id='ri-original-price'>${this.state.originalPrice}</div>
         <div>{stars(this.state.starRating)}</div>
       </div>
     </div>)

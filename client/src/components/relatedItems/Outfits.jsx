@@ -9,8 +9,6 @@ class Outfits extends React.Component {
   render() {
     return (<div className='outfits'>
       <h2>My Outfits</h2>
-      <ProductCard />
-      <ProductCard />
     </div>)
   }
 }

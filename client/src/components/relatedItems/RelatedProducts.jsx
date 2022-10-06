@@ -7,7 +7,7 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    return (<div className='related-products'>
+    return (<div id='related-products'>
       <h2>Related Products</h2>
       <ProductCard />
       <ProductCard />
