@@ -1,11 +1,10 @@
 import React from 'react'
 
-const calculateAverageStarRating = () => {
-  return 2.2
+const calculateAndDisplayAverageRating = (productId) => {
+  return stars(2.2);
 }
 
 const stars = (numOfStars) => {
-  var numOfStars = numOfStars || calculateAverageStarRating();
   let fullRating = [];
   let fullStars = Math.floor(numOfStars);
   let fracStars = numOfStars - Math.floor(numOfStars);
@@ -40,4 +39,4 @@ const stars = (numOfStars) => {
 }
 
 
-export default stars;
+export default calculateAndDisplayAverageRating;
