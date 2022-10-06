@@ -10,7 +10,7 @@ const ReviewTile = ({ review }) => {
       <h3> {review.summary} </h3>
       <h4> {review.body} </h4>
       <br></br>
-  </div>
+    </div>
   )
 }
 
