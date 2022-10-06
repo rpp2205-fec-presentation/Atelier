@@ -24,7 +24,6 @@ class ReviewsList extends React.Component{
       params: {product_id: 71698, count: 100},
     })
     .then(reviews => {
-      console.log(reviews.data.results);
       this.setState({
         reviews: reviews.data.results
       })
