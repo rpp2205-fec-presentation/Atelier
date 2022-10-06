@@ -59,9 +59,48 @@
    margin: auto;
  }
 
- .product-card {
+ /* RELATED ITEMS AND COMPARISON FORMATTING */
+
+ #related-items-and-comparisons{
   background-color: lightgrey;
   padding: 10px;
   margin: 5px;
+ }
 
+ #related-products, #outfits {
+  background-color: darkgray;
+  margin: 10px;
+  padding: 10px;
+ }
+
+ #product-card, #related-items-and-comparisons{
+  display: inline-block;
+  background-color: lightgrey;
+  padding: 10px;
+  margin: 5px;
+ }
+
+ #ri-product-info {
+  background-color: beige;
+ }
+
+ #ri-image-block {
+  text-align: center;
+ }
+
+ #ri-image {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+ }
+
+ #ri-category, #ri-original-price {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+ }
+
+ #ri-product-name {
+  font-weight: bold;
+  font-size: 16px;
  }

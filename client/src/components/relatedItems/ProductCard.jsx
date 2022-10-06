@@ -1,24 +1,27 @@
 import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
+import stars from '../helpers/stars.js';
+import calculateAverageRating from '../helpers/calculateAverageRating.js';
+
 const axios = require('axios');
 
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 71698,
+      productId: 71697,
       productCategory: '',
       productName: '',
       originalPrice: 0,
       starRating: 0,
-      numRatings: 0,
       isOnSale: false,
-      salesPrice: 0
+      salesPrice: 0,
+      imgUrl: ''
     }
   }
 
   componentDidMount() {
-    var productCategory, productName, originalPrice, isOnSale;
+    var productCategory, productName, originalPrice, isOnSale, imgUrl;
     var salesPrice = 0;
     var starRating = 0;
     var numRatings = 0;
@@ -32,21 +35,10 @@ class ProductCard extends React.Component {
       productCategory = result.data.category;
       productName = result.data.name;
 
-      return axios({
-        method: 'get',
-        url: `/reviews/meta`,
-        params: {product_id: this.state.productId}
-      })
+      return calculateAverageRating(this.state.productId)
     })
     .then(result => {
-      var ratings = result.data.ratings;
-
-      for(var i = 1; i <= 5; i++) {
-        starRating += i * parseInt(ratings[i], 10);
-        numRatings += parseInt(ratings[i], 10)
-      }
-
-      starRating = starRating / numRatings;
+      starRating = result;
 
       return axios({
         method: 'get',
@@ -61,6 +53,7 @@ class ProductCard extends React.Component {
       for (var style of styles) {
         if (style['default?']) {
           originalPrice = style.original_price;
+          imgUrl = style.photos[0].url;
           if (style.sale_price !== null) {
             isOnSale = true;
             salesPrice = style.sale_price;
@@ -76,7 +69,7 @@ class ProductCard extends React.Component {
         isOnSale,
         salesPrice,
         starRating,
-        numRatings
+        imgUrl
       });
     })
     .catch(err => {
@@ -85,18 +78,15 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    return (<div className='product-card'>
-      <h3>Product Card</h3>
-      <div>Product Information
-        <ul>
-          <li>{this.state.productCategory}</li>
-          <li>{this.state.productName}</li>
-          <li>{this.state.starRating}</li>
-          <li>{this.state.numRatings}</li>
-          <li>{this.state.originalPrice}</li>
-          <li>{this.state.isOnSale}</li>
-          <li>{this.state.salesPrice}</li>
-        </ul>
+    return (<div id='product-card'>
+      <div id='ri-image-block'>
+        <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
+      </div>
+      <div id='ri-product-info'>
+        <div id='ri-category'>{this.state.productCategory}</div>
+        <div id='ri-product-name'>{this.state.productName}</div>
+        <div id='ri-original-price'>${this.state.originalPrice}</div>
+        <div>{stars(this.state.starRating)}</div>
       </div>
     </div>)
   }
