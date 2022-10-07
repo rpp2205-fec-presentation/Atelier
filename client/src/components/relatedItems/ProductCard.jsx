@@ -9,7 +9,6 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 71697,
       productCategory: '',
       productName: '',
       originalPrice: 0,
@@ -28,22 +27,22 @@ class ProductCard extends React.Component {
 
     axios({
       method: 'get',
-      url: `/products/${this.state.productId}`,
-      params: {product_id: this.state.productId}
+      url: `/products/${this.props.productId}`,
+      params: {product_id: this.props.productId}
     })
     .then(result => {
       productCategory = result.data.category;
       productName = result.data.name;
 
-      return calculateAverageRating(this.state.productId)
+      return calculateAverageRating(this.props.productId)
     })
     .then(result => {
       starRating = result;
 
       return axios({
         method: 'get',
-        url: `/products/${this.state.productId}/styles`,
-        params: {product_id: this.state.productId}
+        url: `/products/${this.props.productId}/styles`,
+        params: {product_id: this.props.productId}
       })
     })
     .then(result => {
