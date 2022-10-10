@@ -1,6 +1,5 @@
 import React from 'react';
 import stars from '../helpers/stars.js';
-import axios from 'axios';
 
 const ReviewTile = ({ review }) => {
   return (
