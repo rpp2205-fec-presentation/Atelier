@@ -4,6 +4,7 @@ import stars from "../helpers/stars.js";
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import ProductCategory from "./ProductCategory.jsx";
 import ProductPrice from "./ProductPrice.jsx";
+import ProductStyle from "./ProductStyle.jsx";
 import ProductDetail from "./ProductDetail.jsx";
 
 class ProductInfo extends React.Component {
@@ -67,9 +68,10 @@ class ProductInfo extends React.Component {
       <div id="po-product-info">
         <h4>{stars(ratings)}</h4>
         {console.log('info', this.state)}
-        <ProductCategory category={category} name={name}/>
-        <ProductPrice price={originalPrice}/>
-        <ProductDetail slogan={slogan} description={description}/>
+        <ProductCategory category={category} name={name} />
+        <ProductPrice price={originalPrice} />
+        <ProductStyle id={id} />
+        <ProductDetail slogan={slogan} description={description} />
       </div>
     )
   }
