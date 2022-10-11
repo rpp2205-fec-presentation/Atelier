@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 import RatingsReviews from '../../client/src/components/ratings&reviews/RatingsReviews.jsx';
 import ReviewsList from '../../client/src/components/ratings&reviews/ReviewsList.jsx';
 import ReviewTile from '../../client/src/components/ratings&reviews/ReviewTile.jsx';
+import allReviewsEx from './reviewsExamples/allReviewsEx.js';
+import reviewsMetaData from './reviewsExamples/reviewsMetaData.js';
 
 // const server = setupServer(
 //   rest.get('/reviews/:product_id', (req, res, ctx) => {
@@ -67,17 +69,22 @@ describe('Ratings and Reviews', function () {
 });
 
 describe('Reviews Tile', function () {
-  it('should render a review', async () => {
-    const oneReviews = render(<ReviewTile review={{"review_id": 3,
-    "rating": 4,
-    "summary": "I am liking these glasses",
-    "recommend": false,
-    "response": "Glad you're enjoying the product!",
-    "body": "They are very dark. But that's good because I'm in very sunny spots",
-    "date": "2019-06-23T00:00:00.000Z",
-    "reviewer_name": "bigbrotherbenjamin",
-    "helpfulness": 5,
-    "photos": []}} />);
-    expect(oneReviews.getByText("I am liking these glasses"));
+  it('should render a review', () => {
+    const oneReviews = render(<ReviewTile review={allReviewsEx[0]} />);
+    expect(oneReviews.getByText("Great product! Must buy!"));
   });
+});
+
+describe('Reviews List', function () {
+  it('should render multiple reviews', () => {
+    const { getAllByText } = render(<ReviewsList reviews={allReviewsEx} />);
+    expect(getAllByText('Rating', {exact: false})).toHaveLength(7);
+  });
+
+  // describe('Reviews Breakdown', function () {
+  //   it('should render multiple reviews', () => {
+  //     const ratingDB = render(<RatingsBD productId= />);
+  //     expect(getAllByText('Rating', {exact: false})).toHaveLength(7);
+  //   });
+
 });
