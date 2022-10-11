@@ -3,8 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import stars from '../helpers/stars.js';
-import PrctScaleChar from './PrctScaleChar.jsx';
-import RatingsAvgByStar from './RatingsAvgByStar.jsx';
+import { PrctScaleChar, RatingsAvgByStar } from './PrctScaleChar.jsx';
+// import RatingsAvgByStar from './RatingsAvgByStar.jsx';
 import { ScaleText, RateVal, BDContainer, RateRight } from './ReviewsStyles.jsx';
 
 const RatingsBD = ({ productId, metaData, ratings }) => {
@@ -94,7 +94,7 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
           <BDContainer>
             <h3> Rating Breakdown </h3>
             <h2>Overall Rating</h2>
-            <h4>{avgRating(ratings)}</h4>
+            <h1>{avgRating(ratings)}</h1>
             <h4>{stars(avgRating(ratings))}</h4>
             <h2>Ratings By Stars</h2>
             <div>{Object.keys(theRatings).slice(0).reverse().map(rating => {
