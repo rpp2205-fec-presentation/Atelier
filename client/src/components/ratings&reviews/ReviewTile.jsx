@@ -19,6 +19,7 @@ const ReviewTile = ({ review }) => {
       <h4> {review.body} </h4>
       <h5>{recommended}</h5>
       <br></br>
+      <span>Helpful? {review.helpfulness}</span>
     </Tile>
   )
 }
