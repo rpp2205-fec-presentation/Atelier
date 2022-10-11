@@ -34,7 +34,7 @@ class RatingsReviews extends React.Component{
     axios({
       method: 'get',
       url: '/reviews/',
-      params: {product_id: 71697, count: 100},
+      params: {product_id: this.state.product_id, count: 100},
     })
     .then(reviews => {
       this.setState({
@@ -50,7 +50,7 @@ class RatingsReviews extends React.Component{
     axios({
       method: 'get',
       url: '/reviews/meta',
-      params: {product_id: 71697},
+      params: {product_id: this.state.product_id},
     })
     .then(meta => {
       this.setState({

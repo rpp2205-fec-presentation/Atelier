@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 /* Rating Breakdown */
-const ScaleText = styled.span`
+export const ScaleText = styled.span`
   float: right;
   padding: 0 3px;
 `;
 
-const RateVal = styled.div`
+export const RateVal = styled.div`
   border-bottom: 1px dotted black;
 `;
 
-const BDContainer = styled.div`
+export const BDContainer = styled.div`
   top: 25px;
 `;
 
-const RateRight = styled.span`
+export const RateRight = styled.span`
   float: right;
 `;
 
@@ -22,33 +22,33 @@ const RateRight = styled.span`
 
 /* RatingsReviews Styling */
 
-const DivCent = styled.div`
+export const DivCent = styled.div`
 width: 100%;
 margin: 10px auto;
 `;
 
-const InnerDiv = styled.div`
+export const InnerDiv = styled.div`
   width: 90%;
   height: auto;
   margin: 0 auto;
 `;
 
-const ReviewsContainer = styled.div`
+export const ReviewsContainer = styled.div`
     border-radius: 15px;
     overflow: auto;
 `;
 
-const RateBD = styled.div`
+export const RateBD = styled.div`
   float: left;
   position: absolute;
   margin: 10px auto;
   padding: 0 1%;
   width: 25%;
-  height: 500px;
+  height: 1000px;
   overflow: auto;
 `;
 
-const RList = styled.div`
+export const RList = styled.div`
   margin: 50px auto;
   float: right;
   width: 65%;
@@ -56,7 +56,49 @@ const RList = styled.div`
   overflow: auto;
 `;
 
+/* Review Tile */
+export const Tile = styled.div`
+  border-bottom: 1px solid;
+  padding: 10px;
+`;
 
-export {
-  ScaleText, RateVal, BDContainer, RateRight, RateBD, ReviewsContainer, RList, DivCent, InnerDiv
+export const Check = styled.div`
+  & {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 50%;
+    width: 3px;
+    background-color: #000000;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
 }
+
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: #000000;
+    content: "";
+    transform: translateX(10px) rotate(-45deg);
+    transform-origin: left bottom;
+  }
+`;
+
+export const TextR = styled.span`
+  float: right;
+`;
+
+// export {
+//   ScaleText, RateVal, BDContainer, RateRight, RateBD, ReviewsContainer, RList, DivCent, InnerDiv,
+// }
