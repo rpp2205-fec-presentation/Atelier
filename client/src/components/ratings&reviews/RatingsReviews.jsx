@@ -3,6 +3,7 @@ import RatingsBD from './RatingsBD.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import axios from 'axios';
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
+import { RateBD } from './ReviewsStyles.jsx';
 
 class RatingsReviews extends React.Component{
   constructor(props) {
@@ -67,7 +68,9 @@ class RatingsReviews extends React.Component{
     return (
       <div>
         <h2>Ratings & Reviews</h2>
+
         <RatingsBD product_id={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
+
         <br></br>
         <ReviewsList reviews={this.state.reviews}/>
       </div>

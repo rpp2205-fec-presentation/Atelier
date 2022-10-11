@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import stars from '../helpers/stars.js';
 import PrctScaleChar from './PrctScaleChar.jsx';
-
-const ScaleText = styled.span`
-  float: right;
-  padding: 0 3px;
-`;
+import { ScaleText, RateVal, BDContainer, RateRight } from './ReviewsStyles.jsx';
 
 const RatingsBD = ({ productId, metaData, ratings }) => {
 
@@ -90,18 +86,19 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
 
 
         return (
-          <div>
+          <BDContainer>
             <h3> Rating Breakdown </h3>
             <h2>Overall Rating</h2>
             <h4>{avgRating(ratings)}</h4>
             <h4>{stars(avgRating(ratings))}</h4>
             <h2>Ratings By Stars</h2>
             <div>{Object.keys(theRatings).map(rating => {
-                  return <li key={rating}>{stars(rating)}: {theRatings[rating]}</li>;
+                  return <RateVal key={rating}>{stars(rating)}:
+                  <RateRight>{theRatings[rating]}</RateRight></RateVal>;
                 })}
             </div>
             {charBreakdown}
-          </div>
+          </BDContainer>
         )
 
 }
