@@ -4,6 +4,7 @@ import stars from "../helpers/stars.js";
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import ProductCategory from "./ProductCategory.jsx";
 import ProductPrice from "./ProductPrice.jsx";
+import ProductDetail from "./ProductDetail.jsx";
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class ProductInfo extends React.Component {
       name: '',
       originalPrice: 0,
       ratings: 0,
+      slogan: '',
+      description: '',
     }
     this.getProductById =this.getProductById.bind(this);
   }
@@ -23,7 +26,9 @@ class ProductInfo extends React.Component {
             category,
             name,
             originalPrice,
-            ratings
+            ratings,
+            slogan,
+            description
           } = this.state;
     axios({
       method: 'get',
@@ -34,11 +39,13 @@ class ProductInfo extends React.Component {
       calculateAverageRating(res.data.id)
         .then(avgRating => this.setState({
           ratings : avgRating
-      }))
+        }))
       this.setState({
         category : res.data.category,
         name : res.data.name,
         originalPrice : res.data.default_price,
+        slogan: res.data.slogan,
+        description: res.data.description,
       })
     })
   }
@@ -52,7 +59,9 @@ class ProductInfo extends React.Component {
             category,
             name,
             originalPrice,
-            ratings
+            ratings,
+            slogan,
+            description
           } = this.state;
     return (
       <div id="po-product-info">
@@ -60,6 +69,7 @@ class ProductInfo extends React.Component {
         {console.log('info', this.state)}
         <ProductCategory category={category} name={name}/>
         <ProductPrice price={originalPrice}/>
+        <ProductDetail slogan={slogan} description={description}/>
       </div>
     )
   }
