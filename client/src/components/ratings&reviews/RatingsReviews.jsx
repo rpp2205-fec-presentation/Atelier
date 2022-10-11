@@ -9,7 +9,7 @@ class RatingsReviews extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      product_id: '',
+      product_id: 71697,
       rating: {
         1: 0,
         2: 0,
@@ -69,7 +69,7 @@ class RatingsReviews extends React.Component{
       <div>
         <h2>Ratings & Reviews</h2>
 
-        <RatingsBD product_id={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
+        <RatingsBD productId={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
 
         <br></br>
         <ReviewsList reviews={this.state.reviews}/>
