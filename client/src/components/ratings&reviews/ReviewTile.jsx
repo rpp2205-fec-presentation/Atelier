@@ -1,6 +1,8 @@
 import React from 'react';
 import stars from '../helpers/stars.js';
 import { Tile, Check, TextCent, ScaleText } from './ReviewsStyles.jsx';
+import { format, parseISO } from 'date-fns';
+
 
 const ReviewTile = ({ review }) => {
   let recommended;
@@ -10,13 +12,15 @@ const ReviewTile = ({ review }) => {
     recommended = <span></span>
   }
 
+  let reviewDate = format(parseISO(review.date), 'MMMM dd yyyy');
+
   return (
     <Tile>
       <br></br>
-      <div>Rating:{stars(review.rating)}<ScaleText>{review.reviewer_name}, {review.date}</ScaleText>
+      <div>Rating:{stars(review.rating)}<ScaleText>{review.reviewer_name}, {reviewDate}</ScaleText>
       </div>
       <h3> {review.summary} </h3>
-      <h4> {review.body} </h4>
+      <p> {review.body} </p>
       <h5>{recommended}</h5>
       <br></br>
       <span>Helpful? {review.helpfulness}</span>

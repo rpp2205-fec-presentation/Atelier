@@ -19,9 +19,9 @@ top: 0;
 left: 0;
 white-space: nowrap;
 overflow: hidden;
-border-left: 10px solid transparent;
-border-right: 10px solid transparent;
-border-bottom: 20px solid #000000;
+border-left: 8px solid transparent;
+border-right: 8px solid transparent;
+border-bottom: 15px solid #000000;
 width: 0px;
 height: 0px;
 margin-left: ${({percent}) => {
@@ -48,9 +48,8 @@ const OuterRating = styled.div`
 display: inline-block;
 width: 100px;
 height: 10px;
-border: 1px solid black;
 position: relative;
-background-color: #F8F8F8;
+background-color: #F0F0F0;
 `;
 
 const InnerRating = styled.div`
@@ -59,7 +58,7 @@ top: 0;
 left: 0;
 white-space: nowrap;
 overflow: hidden;
-height: 10px;
+height: 11px;
 width: ${({percent}) => {
   return percent;
 }}%;
