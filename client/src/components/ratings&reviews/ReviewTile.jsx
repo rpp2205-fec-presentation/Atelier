@@ -1,11 +1,11 @@
 import React from 'react';
 import stars from '../helpers/stars.js';
-import { Tile, Check, TextR } from './ReviewsStyles.jsx';
+import { Tile, Check, TextCent, ScaleText } from './ReviewsStyles.jsx';
 
 const ReviewTile = ({ review }) => {
   let recommended;
   if (review.recommend) {
-    recommended = <Check></Check>
+    recommended = <span><Check></Check><TextCent>I recommend this product</TextCent></span>
   } else {
     recommended = <span></span>
   }
@@ -13,7 +13,7 @@ const ReviewTile = ({ review }) => {
   return (
     <Tile>
       <br></br>
-      <div>Rating:{stars(review.rating)}<TextR>{review.reviewer_name}, {review.date}</TextR>
+      <div>Rating:{stars(review.rating)}<ScaleText>{review.reviewer_name}, {review.date}</ScaleText>
       </div>
       <h3> {review.summary} </h3>
       <h4> {review.body} </h4>

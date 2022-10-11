@@ -75,7 +75,7 @@ export const Check = styled.div`
     left: 0;
     top: 50%;
     height: 50%;
-    width: 3px;
+    width: 2px;
     background-color: #000000;
     content: "";
     transform: translateX(10px) rotate(-45deg);
@@ -86,7 +86,7 @@ export const Check = styled.div`
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 3px;
+    height: 2px;
     width: 100%;
     background-color: #000000;
     content: "";
@@ -95,8 +95,9 @@ export const Check = styled.div`
   }
 `;
 
-export const TextR = styled.span`
-  float: right;
+export const TextCent = styled.span`
+  float: center;
+  padding-left: 10px
 `;
 
 // export {
