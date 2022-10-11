@@ -9,17 +9,26 @@ border: 1px solid black;
 position: relative;
 background-color: #F8F8F8;
 `;
+
+// position: ${({amount}) => {
+//   return amount * 100;
+// }}%;
 const Inner = styled.div`
 position: absolute;
 top: 0;
 left: 0;
 white-space: nowrap;
 overflow: hidden;
-height: 10px;
-width: ${({percent}) => {
-  return percent;
-}}%;
-background-color: #505050;
+border-left: 10px solid transparent;
+border-right: 10px solid transparent;
+border-bottom: 20px solid #000000;
+width: 0px;
+height: 0px;
+margin-left: ${({percent}) => {
+    return percent;
+  }}%;
+
+
 `;
 
 const PrctScaleChar = ({value}) => {
