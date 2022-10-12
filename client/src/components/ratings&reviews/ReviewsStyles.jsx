@@ -121,3 +121,9 @@ export const ShowMore = styled.span`
     }
   `}
 `;
+
+export const ImgThumbnail = styled.img`
+  width: 50px;
+  height: 50px;
+  margin: 3px;
+`;

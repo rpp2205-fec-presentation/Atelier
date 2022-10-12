@@ -98,7 +98,7 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
             <h4>{stars(avgRating(ratings))}</h4>
             <h2>Ratings By Stars</h2>
             <div>{Object.keys(theRatings).slice(0).reverse().map(rating => {
-                  return <RateVal key={rating}>{stars(rating)}:
+                  return <RateVal key={rating}>{rating} Stars:
                   <RateRight><RatingsAvgByStar value={theRatings[rating]} /></RateRight>
                   </RateVal>;
                 })}

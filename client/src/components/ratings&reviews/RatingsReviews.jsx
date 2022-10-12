@@ -9,7 +9,7 @@ class RatingsReviews extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 71697,
+      product_id: 71701,
       rating: {
         1: 0,
         2: 0,

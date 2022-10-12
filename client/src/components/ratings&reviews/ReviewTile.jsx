@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import stars from '../helpers/stars.js';
-import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore } from './ReviewsStyles.jsx';
+import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail } from './ReviewsStyles.jsx';
 import { format, parseISO } from 'date-fns';
 
 const BodyReview = (props) => {
@@ -48,6 +48,17 @@ const ReviewTile = ({ review }) => {
       </div>
       <h3> {review.summary} </h3>
       <BodyReview body={review.body} />
+      <div>
+        {review.photos.map((photo, index) => {
+          if (typeof photo === 'string') {
+            photo = { url: photo, key: index}
+          }
+          return (
+
+            <ImgThumbnail src={photo.url} key={photo.id}/>
+          )
+        })}
+      </div>
       <h5>{recommended}</h5>
       <br></br>
       <span>Helpful? {review.helpfulness}</span>
