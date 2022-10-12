@@ -1,4 +1,7 @@
 import React from 'react'
+import styled from 'styled-components';
+
+
 
 const stars = (numOfStars) => {
   let fullRating = [];
@@ -28,7 +31,7 @@ const stars = (numOfStars) => {
   return (
     <span>
       {fullRating.map((img, index) => (
-        <img src={img} key={index}></img>
+        <img id="starImg" src={img} key={index}></img>
       ))}
     </span>
   )

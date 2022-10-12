@@ -10,9 +10,7 @@ position: relative;
 background-color: #F8F8F8;
 `;
 
-// position: ${({amount}) => {
-//   return amount * 100;
-// }}%;
+
 const Inner = styled.div`
 position: absolute;
 top: 0;

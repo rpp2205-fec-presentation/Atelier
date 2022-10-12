@@ -99,7 +99,3 @@ export const TextCent = styled.span`
   float: center;
   padding-left: 10px
 `;
-
-// export {
-//   ScaleText, RateVal, BDContainer, RateRight, RateBD, ReviewsContainer, RList, DivCent, InnerDiv,
-// }
