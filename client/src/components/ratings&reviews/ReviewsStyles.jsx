@@ -99,3 +99,25 @@ export const TextCent = styled.span`
   float: center;
   padding-left: 10px
 `;
+export const BodyText = styled.div`
+text-align: left;
+font-size: 14px;
+margin-left: 5px;
+margin-top: 5px;
+color: 696969;
+`;
+
+export const ShowMore = styled.span`
+  font-weight: bold;
+  text-decoration: underline;
+  ${({ disabled }) =>
+    disabled
+      ? ''
+      : `
+    cursor: pointer;
+    &:hover:not(:disabled) {
+      color: red;
+      transform: translateY(-1px);
+    }
+  `}
+`;
