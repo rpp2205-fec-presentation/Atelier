@@ -23,7 +23,7 @@ afterAll(() => server.close())
 
 describe('Ratings and Reviews', function () {
   it('should have a Ratings & Reviews title', async () => {
-    render(<RatingsReviews />);
+    render(<RatingsReviews product_id={reviewsMetaData.product_id} reviews={allReviewsEx} metaData={reviewsMetaData} ratings={reviewsMetaData.ratings}/>);
     expect(screen.getByText('Ratings & Reviews')).toBeDefined();
   });
 });
@@ -38,7 +38,7 @@ describe('Reviews Tile', function () {
 describe('Reviews List', function () {
   it('should render multiple reviews', async () => {
     const { getAllByText } = render(<ReviewsList reviews={allReviewsEx} />);
-    expect(getAllByText('Rating', {exact: false})).toHaveLength(7);
+    expect(getAllByText('Report', {exact: false})).toHaveLength(7);
   });
 });
 
