@@ -21,6 +21,10 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
     return (count === 0) ? 5 : (total / count).toFixed(1);
   };
 
+  // let avgRating = (prodid) => {
+  //   return calculateAverageRating(prodid);
+  // }
+
   let char = metaData.characteristics;
   if (char !== undefined) {
     var size = char.Size || '';
@@ -102,45 +106,5 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
         )
 
 }
-
-
-
-
-
-// class RatingsBD extends React.Component{
-//   constructor(props) {
-//     super(props);
-
-
-//     // this.getMetaData = this.getMetaData.bind(this);
-//   }
-
-//   componentDidMount() {
-//     this.getMetaData();
-//   }
-
-//   getMetaData() {
-//     axios({
-//       method: 'get',
-//       url: '/reviews/meta',
-//       params: {product_id: 71697},
-//     })
-//     .then(meta => {
-//       console.log(meta.data.characteristics);
-//       // })
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     })
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <h3> Rating Breakdown </h3>
-//       </div>
-//     )
-//   }
-// }
 
 export default RatingsBD;
