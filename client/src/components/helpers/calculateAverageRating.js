@@ -13,6 +13,10 @@ const calculateAverageRating = (productId) => {
   .then(result => {
     var ratings = result.data.ratings;
 
+    if (ratings === undefined) {
+      return 0;
+    }
+
     for(var i = 1; i <= 5; i++) {
       starRating += i * parseInt(ratings[i], 10);
       numRatings += parseInt(ratings[i], 10)
