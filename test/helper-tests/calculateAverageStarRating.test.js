@@ -5,14 +5,18 @@ import {setupServer} from 'msw/node';
 const server = setupServer(
   rest.get('/reviews/meta', (req, res, ctx) => {
     // respond using a mocked JSON body
-    return res(ctx.json({data: {  "product_id": "2",
-    "ratings": {
-      1: 0,
-      2: 1,
-      3: 1,
-      4: 2,
-      5: 3
-    }}}))
+    return res(ctx.json(
+      {
+        "product_id": "2",
+        "ratings": {
+          1: 0,
+          2: 1,
+          3: 1,
+          4: 2,
+          5: 3
+        }
+      }
+    ))
   }),
 );
 
@@ -29,9 +33,9 @@ describe("Calculate Average Star Rating", () => {
     var average;
     calculateAverageRating(2).
     then(result => {
-      console.log(result);
       average = result;
+
+      expect(average).toBe(4);
     });
-    expect(average).toBe(4);
   });
 });
