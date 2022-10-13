@@ -29,6 +29,7 @@ describe("Calculate Average Star Rating", () => {
     var average;
     calculateAverageRating(2).
     then(result => {
+      console.log(result);
       average = result;
     });
     expect(average).toBe(4);
