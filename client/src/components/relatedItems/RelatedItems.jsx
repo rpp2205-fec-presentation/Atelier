@@ -3,7 +3,7 @@ import RelatedProducts from './RelatedProducts.jsx';
 import Outfits from './Outfits.jsx';
 const axios = require('axios');
 
-
+// does this affect main
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
