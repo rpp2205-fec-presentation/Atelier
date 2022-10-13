@@ -62,6 +62,13 @@ export const Tile = styled.div`
   padding: 10px;
 `;
 
+export const HoverLink = styled.div`
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+
 export const Check = styled.div`
   & {
     position: relative;
@@ -126,4 +133,9 @@ export const ImgThumbnail = styled.img`
   width: 50px;
   height: 50px;
   margin: 3px;
+`;
+
+export const HelpfulLine = styled.div`
+  display: inline-flex;
+  gap: 5px;
 `;

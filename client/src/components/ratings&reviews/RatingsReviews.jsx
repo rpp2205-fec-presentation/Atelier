@@ -75,7 +75,7 @@ class RatingsReviews extends React.Component{
                 <RatingsBD productId={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
               </RateBD>
               <RList>
-                <ReviewsList reviews={this.state.reviews}/>
+                <ReviewsList reviews={this.state.reviews} productId={this.state.product_id}/>
               </RList>
           </ReviewsContainer>
         </InnerDiv>

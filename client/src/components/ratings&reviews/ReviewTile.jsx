@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import stars from '../helpers/stars.js';
-import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail } from './ReviewsStyles.jsx';
+import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail, HoverLink, HelpfulLine } from './ReviewsStyles.jsx';
 import { format, parseISO } from 'date-fns';
+import axios from 'axios';
 
 const BodyReview = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -30,7 +31,7 @@ const BodyReview = (props) => {
 };
 
 
-const ReviewTile = ({ review }) => {
+const ReviewTile = ({ review, reviews, productId }) => {
   let recommended;
   if (review.recommend) {
     recommended = <span><Check></Check><TextCent>I recommend this product</TextCent></span>
@@ -40,6 +41,22 @@ const ReviewTile = ({ review }) => {
 
   let reviewDate = format(parseISO(review.date), 'MMMM dd yyyy');
 
+  const handleClick = (e, review_id, type) => {
+    e.preventDefault();
+    axios.put(`/reviews/${type}`, { review_id: review_id })
+      .then((res) => {
+        alert(`This review has been marked as ${type}`);
+        axios.get('/reviews', {
+          params: {
+            product_id: productId,
+            count: 1000,
+            sort: 'helpful'
+          }
+        })
+          .then((res) => { reviews = (res.data.results); });
+      })
+      .catch((err) => { console.log(err); });
+  };
 
   return (
     <Tile>
@@ -61,7 +78,11 @@ const ReviewTile = ({ review }) => {
       </div>
       <h5>{recommended}</h5>
       <br></br>
-      <span>Helpful? {review.helpfulness}</span>
+      <HelpfulLine>
+        Helpful?
+        <HoverLink onClick={(e) => handleClick(e, review.review_id, 'helpful')}> Yes </HoverLink> ({review.helpfulness})
+       | <HoverLink onClick={(e) => handleClick(e, review.review_id, 'report')}>  Report  </HoverLink>
+      </HelpfulLine>
     </Tile>
   )
 }
