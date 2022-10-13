@@ -27,14 +27,10 @@
    -webkit-font-smoothing: antialiased;
  }
 
- /* img,
- picture,
- video,
- canvas,
- svg {
-   display: block;
-   max-width: 100%;
- } */
+ #starImg {
+   height: 18px;
+   width: 18px;
+ }
 
  input,
  button,
@@ -53,11 +49,11 @@
    overflow-wrap: break-word;
  }
 
- main {
+ /* main {
    max-width: 840px;
    padding: 16px;
    margin: auto;
- }
+ } */
 
  /* RELATED ITEMS AND COMPARISON FORMATTING */
 
@@ -105,9 +101,3 @@
   font-size: 16px;
  }
 
- /* RATINGS & REVIEWS FORMATTING */
-
- .tile {
-  border-bottom: 1px solid;
-  padding: 10px;
- }

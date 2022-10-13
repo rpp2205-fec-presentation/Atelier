@@ -3,13 +3,13 @@ import RatingsBD from './RatingsBD.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import axios from 'axios';
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
-import { RateBD } from './ReviewsStyles.jsx';
+import { RateBD, RList, ReviewsContainer, DivCent, InnerDiv } from './ReviewsStyles.jsx';
 
 class RatingsReviews extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 71697,
+      product_id: 71701,
       rating: {
         1: 0,
         2: 0,
@@ -34,7 +34,7 @@ class RatingsReviews extends React.Component{
     axios({
       method: 'get',
       url: '/reviews/',
-      params: {product_id: 71697, count: 100},
+      params: {product_id: this.state.product_id, count: 100},
     })
     .then(reviews => {
       this.setState({
@@ -50,7 +50,7 @@ class RatingsReviews extends React.Component{
     axios({
       method: 'get',
       url: '/reviews/meta',
-      params: {product_id: 71697},
+      params: {product_id: this.state.product_id},
     })
     .then(meta => {
       this.setState({
@@ -66,14 +66,21 @@ class RatingsReviews extends React.Component{
 
   render() {
     return (
-      <div>
+      <DivCent>
         <h2>Ratings & Reviews</h2>
 
-        <RatingsBD productId={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
+        <InnerDiv>
+          <ReviewsContainer>
+            <RateBD>
+                <RatingsBD productId={this.state.product_id} metaData={this.state.metaData} ratings={this.state.ratings} />
+              </RateBD>
+              <RList>
+                <ReviewsList reviews={this.state.reviews} productId={this.state.product_id}/>
+              </RList>
+          </ReviewsContainer>
+        </InnerDiv>
 
-        <br></br>
-        <ReviewsList reviews={this.state.reviews}/>
-      </div>
+      </DivCent>
     )
   }
 }
