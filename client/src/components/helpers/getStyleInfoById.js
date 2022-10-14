@@ -7,7 +7,7 @@ const getStyleInfoById = (id) => {
     params: {product_id: id}
   })
   .then(({ data }) => {
-    console.log('getStyleInfoById>>', data.results)
+    // console.log('getStyleInfoById>>', data.results)
     return data.results;
   })
 }
