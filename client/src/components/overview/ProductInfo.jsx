@@ -11,7 +11,7 @@ class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: 71697,
+      id: this.props.id || 71697,
       category: '',
       name: '',
       originalPrice: 0,
@@ -66,6 +66,7 @@ class ProductInfo extends React.Component {
           } = this.state;
     return (
       <div id="po-product-info">
+        <h5>Product Info</h5>
         <h4>{stars(ratings)}</h4>
         {console.log('info', this.state)}
         <ProductCategory category={category} name={name} />
