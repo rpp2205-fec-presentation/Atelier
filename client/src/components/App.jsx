@@ -35,7 +35,7 @@ const App = () => {
     return (<div>
       <Overview />
       <RelatedItems />
-      <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
+      <RatingsReviews product_id={product_id} reviews={reviews} setReviews={setReviews} metaData={metaData} ratings={ratings} />
     </div>)
 
 }

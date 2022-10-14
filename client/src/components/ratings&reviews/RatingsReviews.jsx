@@ -6,7 +6,7 @@ import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import { RateBD, RList, ReviewsContainer, DivCent, InnerDiv } from './ReviewsStyles.jsx';
 
 
-const RatingsReviews = ({ product_id, metaData, reviews, ratings }) => {
+const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings }) => {
 
 
 
@@ -19,7 +19,7 @@ const RatingsReviews = ({ product_id, metaData, reviews, ratings }) => {
                 <RatingsBD productId={product_id} metaData={metaData} ratings={ratings} />
               </RateBD>
               <RList>
-                <ReviewsList reviews={reviews} productId={product_id}/>
+                <ReviewsList reviews={reviews} productId={product_id} setReviews={setReviews} metaData={metaData} />
               </RList>
           </ReviewsContainer>
         </InnerDiv>
