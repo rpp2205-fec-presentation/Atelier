@@ -3,6 +3,7 @@ import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
+import { reviewsCall } from './helpers/reviewsCall.js';
 
 const App = () => {
   const [product_id, setId] = useState(71697);
@@ -12,7 +13,7 @@ const App = () => {
   const [pageLoading, setPageLoading] = useState(true);
 
   const getData = () => {
-    const fetchReviews = axios.get('/reviews', {params: {product_id: product_id, count: 100}})
+    const fetchReviews = reviewsCall(product_id, 'relevant')
       .then(reviews => {setReviews(reviews.data.results)});
     const fetchMeta = axios.get('/reviews/meta', {params: {product_id: product_id}})
       .then(meta => {
