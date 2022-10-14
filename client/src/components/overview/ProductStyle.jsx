@@ -1,5 +1,6 @@
 import React from "react";
 import getStyleInfoById from "../helpers/getStyleInfoById.js";
+import SelectedProduct from "./SelectedProduct.jsx";
 
 class ProductStyle extends React.Component {
   constructor(props) {
@@ -10,33 +11,43 @@ class ProductStyle extends React.Component {
       defaultStyle: '',
       selectedStyle: '',
     }
+    this.getData = this.getData.bind(this);
   }
 
-  componentDidMount() {
+  getData() {
     getStyleInfoById(this.props.id)
       .then(data => {
-        const newDefaultStyle =  data.filter(res => res['default?'] ===  true)['0'].name;
+        const newDefaultStyle =  data.filter(res => res['default?'] ===  true)['0'];
         var newImages = [...this.state.images]
         var newData = [...this.state.data]
+        var newData = [...data]
         data.map((res, idx) => {
           newImages.push(res.photos[0].thumbnail_url);
         })
         this.setState({
           data: newData,
           images: newImages,
-          defaultStyle: newDefaultStyle
+          defaultStyle: newDefaultStyle,
+          selectedStyle: newDefaultStyle
         })
       })
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
     const { data, images, defaultStyle, selectedStyle } = this.state;
     return (
       <div>
-        <h3>Style > {defaultStyle}</h3>
-        {images.map((img, idx) => (
-          <img key={idx} src={img} alt="Avatar" />
-        ))}
+        {<SelectedProduct selectedStyle={selectedStyle} />}
+        <div>
+          <h3>Style > {defaultStyle.name}</h3>
+          {images.map((img, idx) => (
+            <img key={idx} src={img} alt="Style Photo" />
+          ))}
+        </div>
       </div>
     )
   }
