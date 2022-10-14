@@ -1,19 +1,11 @@
 import React from 'react';
-import { reviewsCall } from '../helpers/reviewsCall.js';
 
-const Sort = ({ productId, reviews, setReviews }) => {
-  const sortChange = (e, productId) => {
-    reviewsCall(productId, e.target.value)
-      .then(results => setReviews(results.data.results));
-  }
-
-
-
+const Sort = ({ productId, reviews, setReviews, setSorted }) => {
 
   return (
     <h3>
     Sorted by &nbsp;
-    <select onChange={ (e) => sortChange(e, productId)}>
+    <select onChange={ (e) => setSorted(e.target.value)}>
       <option value="helpful">Helpful</option>
       <option value="newest">Newest</option>
       <option value="relevant">Relevance</option>

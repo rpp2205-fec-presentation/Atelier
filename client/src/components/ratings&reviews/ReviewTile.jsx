@@ -3,7 +3,7 @@ import stars from '../helpers/stars.js';
 import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail, HoverLink, HelpfulLine } from './ReviewsStyles.jsx';
 import { format, parseISO } from 'date-fns';
 import axios from 'axios';
-import { reviewsCall } from '../helpers/reviewsCall.js';
+import { reviewsCall } from '../helpers/reviewsHelpers.js';
 
 const BodyReview = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -32,7 +32,7 @@ const BodyReview = (props) => {
 };
 
 
-const ReviewTile = ({ review, reviews, productId }) => {
+const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
   const [countHelpful, setCountHelpful] = useState(0);
   const [isHelpful, setIsHelpful] = useState(false);
   const [isReported, setIsReported] = useState(false);

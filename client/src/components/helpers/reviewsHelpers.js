@@ -9,3 +9,10 @@ export const reviewsCall = (id, sort = 'relevant') => {
     }
   })
 };
+
+export const reviewsFilter = (reviews, filter = 0) => {
+  if (filter === 0) {
+    return reviews;
+  }
+  return reviews.filter(review => review.rating === filter);
+};
