@@ -22,7 +22,12 @@ const App = () => {
       .catch(err => {console.log(err)});
   }
 
+  const setNewProductId = (newProductId) => {
+    setId(newProductId);
+  }
+
   useEffect(() => {
+    console.log('HERE');
     getData();
   }, [])
 
@@ -32,7 +37,7 @@ const App = () => {
 
     return (<div>
       <Overview />
-      <RelatedItems />
+      <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
       <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
     </div>)
 
