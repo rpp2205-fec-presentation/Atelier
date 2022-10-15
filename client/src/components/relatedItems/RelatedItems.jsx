@@ -12,7 +12,7 @@ class RelatedItems extends React.Component {
   render() {
     return (<div id='related-items-and-comparisons'>
       <h2>Related Items and Comparison</h2>
-      <RelatedProducts />
+      <RelatedProducts productId={this.props.productId}/>
       <Outfits />
     </div>)
   }

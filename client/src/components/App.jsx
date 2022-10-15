@@ -5,7 +5,7 @@ import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
 
 const App = () => {
-  const [product_id, setId] = useState(71697);
+  const [product_id, setId] = useState(71698);
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
@@ -32,7 +32,7 @@ const App = () => {
 
     return (<div>
       <Overview />
-      <RelatedItems />
+      <RelatedItems productId={product_id}/>
       <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
     </div>)
 

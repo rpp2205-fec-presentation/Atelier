@@ -28,7 +28,7 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.getRelatedProducts(this.state.productId);
+    this.getRelatedProducts(this.props.productId);
   }
 
   render() {
