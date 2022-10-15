@@ -38,7 +38,7 @@ const App = () => {
     return (<div>
       <Overview />
       <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
-      <RatingsReviews key={`rr_${product_id}`} product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
+      <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
     </div>)
 
 }
