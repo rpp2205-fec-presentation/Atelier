@@ -52,7 +52,16 @@ const App = () => {
     return (<div>
       <Overview />
       <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
-      <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
+      <RatingsReviews
+      product_id={product_id}
+      reviews={reviews}
+      setReviews={setReviews}
+      metaData={metaData}
+      ratings={ratings}
+      filter={filter}
+      setFilter={setFilter}
+      sorted={sorted}
+      setSorted={setSorted} />
     </div>)
 
 }
