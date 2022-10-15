@@ -13,13 +13,13 @@ background-color: #F8F8F8;
 
 const Inner = styled.div`
 position: absolute;
-top: 0;
+top: -6px;
 left: 0;
 white-space: nowrap;
 overflow: hidden;
 border-left: 8px solid transparent;
 border-right: 8px solid transparent;
-border-bottom: 15px solid #000000;
+border-top: 15px solid #000000;
 width: 0px;
 height: 0px;
 margin-left: ${({percent}) => {

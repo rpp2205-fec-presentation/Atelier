@@ -17,10 +17,10 @@ const App = () => {
 
 
 
-  const getData = () => {
-    const fetchReviews = reviewsCall(product_id, sorted)
+  const getData = (id = 71697) => {
+    const fetchReviews = reviewsCall(id, sorted)
       .then(reviews => {setReviews(reviews.data.results)});
-    const fetchMeta = axios.get('/reviews/meta', {params: {product_id: product_id}})
+    const fetchMeta = axios.get('/reviews/meta', {params: {product_id: id}})
       .then(meta => {
         setMetaData(meta.data);
         setRatings(meta.data.ratings);
@@ -38,6 +38,18 @@ const App = () => {
   useEffect(() => {
     getData();
   }, [])
+
+  useEffect(() => {
+    const url = new URL(document.URL);
+    const id = parseInt(url.search.split('=')[1], 10);
+    if (id) {
+      getData(id);
+    } else {
+      getData(product_id);
+    }
+    setSorted('relevant');
+    setFilter(0);
+  }, [product_id]);
 
   useEffect(() => {
     reviewsCall(product_id, sorted)
