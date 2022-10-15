@@ -14,5 +14,8 @@ export const reviewsFilter = (reviews, filter = 0) => {
   if (filter === 0) {
     return reviews;
   }
-  return reviews.filter(review => review.rating === filter);
+
+  let returnFilter = reviews.filter(review => review.rating === filter);
+
+  return returnFilter;
 };

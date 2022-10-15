@@ -68,7 +68,7 @@ class ProductInfo extends React.Component {
       <div id="po-product-info">
         <h5>Product Info</h5>
         <h4>{stars(ratings)}</h4>
-        {console.log('info', this.state)}
+        {/* {console.log('info', this.state)} */}
         <ProductCategory category={category} name={name} />
         <ProductPrice price={originalPrice} />
         <ProductStyle id={id} />

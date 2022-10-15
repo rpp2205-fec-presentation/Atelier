@@ -88,14 +88,14 @@ const RatingsBD = ({ productId, metaData, ratings, filter, setFilter, reviews, s
 
   const handleFilterClick = (e) => {
     e.preventDefault();
-    let filterClicked = e.target.id;
+    let filterClicked = parseInt(e.target.id);
     if (filter === filterClicked) {
       filterClicked = 0;
       }
 
     setFilter(filterClicked);
 
-    console.log(filter);
+    console.log(filterClicked);
   };
 
   return (
