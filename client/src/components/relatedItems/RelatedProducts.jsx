@@ -28,14 +28,14 @@ class RelatedProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.getRelatedProducts(this.state.productId);
+    this.getRelatedProducts(this.props.productId);
   }
 
   render() {
     return (<div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId}/>)}
+        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId}/>)}
     </div>)
   }
 }
