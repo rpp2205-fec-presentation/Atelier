@@ -35,7 +35,7 @@ class RelatedProducts extends React.Component {
     return (<div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId}/>)}
+        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId}/>)}
     </div>)
   }
 }

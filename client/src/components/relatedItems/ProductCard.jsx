@@ -17,6 +17,12 @@ class ProductCard extends React.Component {
       salesPrice: 0,
       imgUrl: ''
     }
+
+    this.updateProduct = this.updateProduct.bind(this);
+  }
+
+  updateProduct() {
+    this.props.setNewProductId(this.props.productId);
   }
 
   componentDidMount() {
@@ -77,7 +83,7 @@ class ProductCard extends React.Component {
   }
 
   render() {
-    return (<div id='product-card'>
+    return (<div id='product-card' onClick={() => {this.updateProduct()}}>
       <div id='ri-image-block'>
         <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
       </div>

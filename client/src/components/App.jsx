@@ -5,7 +5,7 @@ import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
 
 const App = () => {
-  const [product_id, setId] = useState(71698);
+  const [product_id, setId] = useState(71697);
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
@@ -22,7 +22,12 @@ const App = () => {
       .catch(err => {console.log(err)});
   }
 
+  const setNewProductId = (newProductId) => {
+    setId(newProductId);
+  }
+
   useEffect(() => {
+    console.log('HERE');
     getData();
   }, [])
 
@@ -32,8 +37,8 @@ const App = () => {
 
     return (<div>
       <Overview />
-      <RelatedItems productId={product_id}/>
-      <RatingsReviews product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
+      <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
+      <RatingsReviews key={`rr_${product_id}`} product_id={product_id} reviews={reviews} metaData={metaData} ratings={ratings}/>
     </div>)
 
 }
