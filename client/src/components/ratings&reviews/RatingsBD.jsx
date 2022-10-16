@@ -6,8 +6,9 @@ import stars from '../helpers/stars.js';
 import { PrctScaleChar, RatingsAvgByStar } from './PrctScaleChar.jsx';
 // import RatingsAvgByStar from './RatingsAvgByStar.jsx';
 import { ScaleText, RateVal, BDContainer, RateRight } from './ReviewsStyles.jsx';
+import { reviewsFilter } from '../helpers/reviewsHelpers.js';
 
-const RatingsBD = ({ productId, metaData, ratings }) => {
+const RatingsBD = ({ productId, metaData, ratings, filter, setFilter, reviews, setReviews }) => {
 
   let theRatings = ratings || { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
 
@@ -21,10 +22,6 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
     }
     return (count === 0) ? 5 : (total / count).toFixed(1);
   };
-
-  // let avgRating = (prodid) => {
-  //   return calculateAverageRating(prodid);
-  // }
 
   let char = metaData.characteristics;
   if (char !== undefined) {
@@ -89,23 +86,34 @@ const RatingsBD = ({ productId, metaData, ratings }) => {
       <></>
   );
 
+  const handleFilterClick = (e) => {
+    e.preventDefault();
+    let filterClicked = parseInt(e.target.id);
+    if (filter === filterClicked) {
+      filterClicked = 0;
+      }
 
-        return (
-          <BDContainer>
-            <h3> Rating Breakdown </h3>
-            <h2>Overall Rating</h2>
-            <h1>{avgRating(ratings)}</h1>
-            <h4>{stars(avgRating(ratings))}</h4>
-            <h2>Ratings By Stars</h2>
-            <div>{Object.keys(theRatings).slice(0).reverse().map(rating => {
-                  return <RateVal key={rating}>{rating} Stars:
-                  <RateRight><RatingsAvgByStar value={theRatings[rating]} /></RateRight>
-                  </RateVal>;
-                })}
-            </div>
-            {charBreakdown}
-          </BDContainer>
-        )
+    setFilter(filterClicked);
+
+    console.log(filterClicked);
+  };
+
+  return (
+    <BDContainer>
+      <h3> Rating Breakdown </h3>
+      <h2>Overall Rating</h2>
+      <h1>{avgRating(ratings)}</h1>
+      <h4>{stars(avgRating(ratings))}</h4>
+      <h2>Ratings By Stars</h2>
+      <div>{Object.keys(theRatings).slice(0).reverse().map(rating => {
+            return <RateVal key={rating}><span id={rating} onClick={handleFilterClick}>{rating} Stars:</span>
+            <RateRight><RatingsAvgByStar value={theRatings[rating]} /></RateRight>
+            </RateVal>;
+          })}
+      </div>
+      {charBreakdown}
+    </BDContainer>
+  )
 
 }
 

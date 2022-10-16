@@ -8,6 +8,7 @@ export const ScaleText = styled.span`
 
 export const RateVal = styled.div`
   border-bottom: 1px dotted black;
+  cursor: pointer;
 `;
 
 export const BDContainer = styled.div`

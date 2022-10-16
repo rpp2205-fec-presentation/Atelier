@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import stars from '../helpers/stars.js';
 import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail, HoverLink, HelpfulLine } from './ReviewsStyles.jsx';
 import { format, parseISO } from 'date-fns';
 import axios from 'axios';
+import { reviewsCall } from '../helpers/reviewsHelpers.js';
 
 const BodyReview = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -31,7 +32,11 @@ const BodyReview = (props) => {
 };
 
 
-const ReviewTile = ({ review, reviews, productId }) => {
+const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
+  const [countHelpful, setCountHelpful] = useState(0);
+  const [isHelpful, setIsHelpful] = useState(false);
+  const [isReported, setIsReported] = useState(false);
+
   let recommended;
   if (review.recommend) {
     recommended = <span><Check></Check><TextCent>I recommend this product</TextCent></span>
@@ -41,25 +46,37 @@ const ReviewTile = ({ review, reviews, productId }) => {
 
   let reviewDate = format(parseISO(review.date), 'MMMM dd yyyy');
 
-  const handleClick = (e, review_id, type) => {
+  useEffect(() => {
+    setCountHelpful(review.helpfulness)
+  }, []);
+
+  const handleHelpfulClick = (e, review_id) => {
     e.preventDefault();
-    axios.put(`/reviews/${type}`, { review_id: review_id })
-      .then((res) => {
-        alert(`This review has been marked as ${type}`);
-        axios.get('/reviews', {
-          params: {
-            product_id: productId,
-            count: 1000,
-            sort: 'helpful'
-          }
+    if(!isHelpful) {
+      axios.put(`/reviews/${review_id}/helpful`)
+        .then(() => {
+          alert('You have marked this review as helpful')
+          setIsHelpful(true);
+          setCountHelpful(countHelpful + 1);
         })
-          .then((res) => { reviews = (res.data.results); });
+        .catch(err => {console.log(err)});
+    }
+  }
+
+  const handleReportClick = (e, review_id) => {
+    e.preventDefault();
+    axios.put(`/reviews/${review_id}/report`)
+      .then(() => {
+        alert('You have reported this review')
+        setIsReported(true);
       })
-      .catch((err) => { console.log(err); });
-  };
+      .catch(err => {console.log(err)});
+  }
 
   return (
     <Tile>
+      { !isReported ?
+      <>
       <br></br>
       <div>{stars(review.rating)}<ScaleText>{review.reviewer_name}, {reviewDate}</ScaleText>
       </div>
@@ -80,9 +97,13 @@ const ReviewTile = ({ review, reviews, productId }) => {
       <br></br>
       <HelpfulLine>
         Helpful?
-        <HoverLink onClick={(e) => handleClick(e, review.review_id, 'helpful')}> Yes </HoverLink> ({review.helpfulness})
-       | <HoverLink onClick={(e) => handleClick(e, review.review_id, 'report')}>  Report  </HoverLink>
+        <HoverLink onClick={handleHelpfulClick}> Yes </HoverLink> ({countHelpful})
+       | <HoverLink onClick={handleReportClick}>  Report  </HoverLink>
       </HelpfulLine>
+      </>
+      :
+      <></>
+      }
     </Tile>
   )
 }
