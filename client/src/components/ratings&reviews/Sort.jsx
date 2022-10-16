@@ -12,7 +12,6 @@ const Sort = ({ productId, reviews, setReviews, setSorted }) => {
     </select>
   </h3>
   )
-
 }
 
 export default Sort;

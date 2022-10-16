@@ -2,13 +2,29 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx'
 import axios from 'axios';
 import Sort from './Sort.jsx';
+import { ListButton } from './ReviewsStyles.jsx';
 
-const ReviewsList = ({ reviews, productId, setReviews, metaData, sorted, setSorted }) => {
+const ReviewsList = ({
+  reviews,
+  productId,
+  setReviews,
+  metaData,
+  sorted,
+  setSorted,
+  showMore,
+  setShowMore,
+  displayedReviews,
+  setDisplayedReviews }) => {
+
+  const moreReviews = () => {
+    let rvwsAmount = displayedReviews;
+    rvwsAmount < reviews.length ? setDisplayedReviews(rvwsAmount + 2) : setShowMore(false);
+  }
 
   return (
     <div>
       <Sort productId={productId} metaData={metaData} setReviews={setReviews} setSorted={setSorted} />
-      {reviews.map((review) => {
+      {reviews.slice(0, displayedReviews).map((review) => {
         return (
           <ReviewTile
             review={review}
@@ -19,6 +35,9 @@ const ReviewsList = ({ reviews, productId, setReviews, metaData, sorted, setSort
             sorted={sorted} />
         )
       })}
+      <div>
+        {showMore ? <ListButton onClick={moreReviews}>More Reviews</ListButton> : <ListButton disable={true}>No More Reviews</ListButton>}
+      </div>
     </div>
   )
 }

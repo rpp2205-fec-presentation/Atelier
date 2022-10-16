@@ -54,7 +54,6 @@ export const RList = styled.div`
   float: right;
   width: 65%;
   left: 25%;
-  overflow: auto;
 `;
 
 /* Review Tile */
@@ -139,4 +138,15 @@ export const ImgThumbnail = styled.img`
 export const HelpfulLine = styled.div`
   display: inline-flex;
   gap: 5px;
+`;
+
+/* Reviews List */
+
+export const ListButton = styled.button`
+  padding: 5px;
+  position: relative;
+  top: 10px;
+  left: 40px;
+  background: #FFFFFF;
+
 `;
