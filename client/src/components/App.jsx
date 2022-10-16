@@ -36,6 +36,7 @@ const App = () => {
   }
 
   useEffect(() => {
+    console.log('HERE');
     getData();
   }, [])
 
