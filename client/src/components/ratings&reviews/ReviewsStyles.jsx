@@ -7,8 +7,9 @@ export const ScaleText = styled.span`
 `;
 
 export const RateVal = styled.div`
-  border-bottom: 1px dotted black;
+  padding: 2px;
   cursor: pointer;
+  text-decoration: underline;
 `;
 
 export const BDContainer = styled.div`
@@ -19,6 +20,13 @@ export const RateRight = styled.span`
   float: right;
 `;
 
+export const AvgRatingStyle = styled.div`
+  flex: 1;
+  height: 50;
+  padding: 50;
+  font-size: 65px;
+  font-weight: 600;
+`;
 
 
 /* RatingsReviews Styling */

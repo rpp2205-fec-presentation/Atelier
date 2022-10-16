@@ -5,9 +5,8 @@ const Outer = styled.div`
 display: inline-block;
 width: 100%;
 height: 10px;
-border: 1px solid black;
 position: relative;
-background-color: #F8F8F8;
+background-color: #F0F0F0;
 `;
 
 
@@ -44,19 +43,15 @@ const PrctScaleChar = ({value}) => {
 
 const OuterRating = styled.div`
 display: inline-block;
-width: 100px;
-height: 10px;
+width: 240px;
+height: 7px;
 position: relative;
 background-color: #F0F0F0;
 `;
 
 const InnerRating = styled.div`
 position: absolute;
-top: 0;
-left: 0;
-white-space: nowrap;
-overflow: hidden;
-height: 11px;
+height: 7px;
 width: ${({percent}) => {
   return percent;
 }}%;
