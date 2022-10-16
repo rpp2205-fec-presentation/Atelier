@@ -24,15 +24,16 @@ export const RateRight = styled.span`
 /* RatingsReviews Styling */
 
 export const DivCent = styled.div`
-width: 100%;
+width: 85%;
 margin: 10px auto;
+padding-top: 50px
 `;
 
-export const InnerDiv = styled.div`
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
-`;
+// export const InnerDiv = styled.div`
+//   width: 90%;
+//   height: auto;
+//   margin: 0 auto;
+// `;
 
 export const ReviewsContainer = styled.div`
     border-radius: 15px;
@@ -43,7 +44,6 @@ export const RateBD = styled.div`
   float: left;
   position: absolute;
   margin: 10px auto;
-  padding: 0 1%;
   width: 25%;
   height: 1000px;
   overflow: auto;
@@ -133,6 +133,7 @@ export const ImgThumbnail = styled.img`
   width: 50px;
   height: 50px;
   margin: 3px;
+  cursor: pointer;
 `;
 
 export const HelpfulLine = styled.div`

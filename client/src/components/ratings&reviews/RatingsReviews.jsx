@@ -13,7 +13,6 @@ const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, fi
   return (
       <DivCent>
         <h2>Ratings & Reviews</h2>
-        <InnerDiv>
           <ReviewsContainer>
             <RateBD>
                 <RatingsBD
@@ -39,7 +38,6 @@ const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, fi
                   setDisplayedReviews={setDisplayedReviews}/>
               </RList>
           </ReviewsContainer>
-        </InnerDiv>
       </DivCent>
   )
 }

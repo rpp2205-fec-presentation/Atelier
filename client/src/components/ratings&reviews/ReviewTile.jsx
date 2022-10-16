@@ -4,6 +4,7 @@ import { Tile, Check, TextCent, ScaleText, BodyText, ShowMore, ImgThumbnail, Hov
 import { format, parseISO } from 'date-fns';
 import axios from 'axios';
 import { reviewsCall } from '../helpers/reviewsHelpers.js';
+import ImageModal from './ImageModal.jsx';
 
 const BodyReview = (props) => {
   const [expanded, setExpanded] = useState(false);
@@ -36,6 +37,8 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
   const [countHelpful, setCountHelpful] = useState(0);
   const [isHelpful, setIsHelpful] = useState(false);
   const [isReported, setIsReported] = useState(false);
+  const [fullSize, setFullSize] = useState(false);
+  const [imgToFull, setImgToFull] = useState();
 
   let recommended;
   if (review.recommend) {
@@ -73,6 +76,11 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
       .catch(err => {console.log(err)});
   }
 
+  const fullSizeModal = (photo) => {
+    setFullSize(true);
+    setImgToFull(photo);
+  }
+
   return (
     <Tile>
       { !isReported ?
@@ -83,15 +91,15 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
       <h3> {review.summary} </h3>
       <BodyReview body={review.body} />
       <div>
-        {review.photos.map((photo, index) => {
+        {review.photos.length > 0 && review.photos.map((photo, index) => {
           if (typeof photo === 'string') {
             photo = { url: photo, key: index}
           }
           return (
-
-            <ImgThumbnail src={photo.url} key={photo.id}/>
+            <ImgThumbnail src={photo.url} key={photo.id} onClick={() => fullSizeModal(photo.url)}/>
           )
         })}
+        {fullSize && <ImageModal image={imgToFull} setFullSize={setFullSize} />}
       </div>
       <h5>{recommended}</h5>
       <br></br>
@@ -109,3 +117,4 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
 }
 
 export default ReviewTile;
+
