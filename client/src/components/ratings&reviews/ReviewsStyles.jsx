@@ -115,11 +115,11 @@ export const TextCent = styled.span`
   padding-left: 10px
 `;
 export const BodyText = styled.div`
-text-align: left;
-font-size: 14px;
-margin-left: 5px;
-margin-top: 5px;
-color: 696969;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-top: 5px;
+  color: 696969;
 `;
 
 export const ShowMore = styled.span`
@@ -152,10 +152,15 @@ export const HelpfulLine = styled.div`
 /* Reviews List */
 
 export const ListButton = styled.button`
-  padding: 5px;
+  padding: 10px;
   position: relative;
   top: 10px;
   left: 40px;
   background: #FFFFFF;
+`;
 
+export const ReviewsListStyle = styled.div`
+  height: 550px;
+  overflow: auto;
+  padding: 5px;
 `;

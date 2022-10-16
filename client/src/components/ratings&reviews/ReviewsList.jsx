@@ -2,7 +2,7 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx'
 import axios from 'axios';
 import Sort from './Sort.jsx';
-import { ListButton } from './ReviewsStyles.jsx';
+import { ListButton, ReviewsListStyle } from './ReviewsStyles.jsx';
 
 const ReviewsList = ({
   reviews,
@@ -24,17 +24,20 @@ const ReviewsList = ({
   return (
     <div>
       <Sort productId={productId} metaData={metaData} setReviews={setReviews} setSorted={setSorted} />
-      {reviews.slice(0, displayedReviews).map((review) => {
-        return (
-          <ReviewTile
-            review={review}
-            key={review.review_id}
-            reviews={reviews}
-            setReviews={setReviews}
-            productId={productId}
-            sorted={sorted} />
-        )
-      })}
+      <ReviewsListStyle>
+
+        {reviews.slice(0, displayedReviews).map((review) => {
+          return (
+            <ReviewTile
+              review={review}
+              key={review.review_id}
+              reviews={reviews}
+              setReviews={setReviews}
+              productId={productId}
+              sorted={sorted} />
+          )
+        })}
+      </ReviewsListStyle>
       <div>
         {showMore ? <ListButton onClick={moreReviews}>More Reviews</ListButton> : <ListButton disable={true}>No More Reviews</ListButton>}
       </div>

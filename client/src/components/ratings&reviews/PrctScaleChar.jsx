@@ -2,30 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Outer = styled.div`
-display: inline-block;
-width: 100%;
-height: 10px;
-position: relative;
-background-color: #F0F0F0;
+  display: inline-block;
+  width: 100%;
+  height: 10px;
+  position: relative;
+  background-color: #F0F0F0;
 `;
 
 
 const Inner = styled.div`
-position: absolute;
-top: -6px;
-left: 0;
-white-space: nowrap;
-overflow: hidden;
-border-left: 8px solid transparent;
-border-right: 8px solid transparent;
-border-top: 15px solid #000000;
-width: 0px;
-height: 0px;
-margin-left: ${({percent}) => {
-    return percent;
-  }}%;
-
-
+  position: absolute;
+  top: -6px;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 15px solid #000000;
+  width: 0px;
+  height: 0px;
+  margin-left: ${({percent}) => {
+      return percent;
+    }}%;
 `;
 
 const PrctScaleChar = ({value}) => {
@@ -42,20 +40,20 @@ const PrctScaleChar = ({value}) => {
 };
 
 const OuterRating = styled.div`
-display: inline-block;
-width: 240px;
-height: 7px;
-position: relative;
-background-color: #F0F0F0;
+  display: inline-block;
+  width: 240px;
+  height: 7px;
+  position: relative;
+  background-color: #F0F0F0;
 `;
 
 const InnerRating = styled.div`
-position: absolute;
-height: 7px;
-width: ${({percent}) => {
-  return percent;
-}}%;
-background-color: #505050;
+  position: absolute;
+  height: 7px;
+  width: ${({percent}) => {
+    return percent;
+  }}%;
+  background-color: #4F7942;
 `;
 
 const RatingsAvgByStar = ({value}) => {
