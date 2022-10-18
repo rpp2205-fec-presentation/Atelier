@@ -19,10 +19,16 @@ class ProductCard extends React.Component {
     }
 
     this.updateProduct = this.updateProduct.bind(this);
+    this.takeAction = this.takeAction.bind(this);
   }
 
   updateProduct() {
     this.props.setNewProductId(this.props.productId);
+  }
+
+  takeAction(e) {
+    e.stopPropagation();
+    console.log('HI');
   }
 
   componentDidMount() {
@@ -82,8 +88,11 @@ class ProductCard extends React.Component {
     })
   }
 
+
+
   render() {
     return (<div id='product-card' onClick={() => {this.updateProduct()}}>
+      <button id='ri-action-button' onClick={(e) => {this.takeAction(e)}}></button>
       <div id='ri-image-block'>
         <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
       </div>

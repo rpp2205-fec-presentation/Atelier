@@ -62,7 +62,6 @@ const App = () => {
   if (pageLoading) { return 'Page is Loading'}
 
     return (<div>
-      <Overview />
       <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
       <RatingsReviews
       product_id={product_id}
