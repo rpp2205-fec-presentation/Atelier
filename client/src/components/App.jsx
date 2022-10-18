@@ -63,20 +63,24 @@ const App = () => {
   if (pageLoading) { return 'Page is Loading'}
 
     return (<div>
-      <Overview />
+      <ErrorBoundary>
+        <Overview />
+      </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
       </ErrorBoundary>
-      <RatingsReviews
-      product_id={product_id}
-      reviews={reviews}
-      setReviews={setReviews}
-      metaData={metaData}
-      ratings={ratings}
-      filter={filter}
-      setFilter={setFilter}
-      sorted={sorted}
-      setSorted={setSorted} />
+      <ErrorBoundary>
+        <RatingsReviews
+        product_id={product_id}
+        reviews={reviews}
+        setReviews={setReviews}
+        metaData={metaData}
+        ratings={ratings}
+        filter={filter}
+        setFilter={setFilter}
+        sorted={sorted}
+        setSorted={setSorted} />
+      </ErrorBoundary>
     </div>)
 
 }
