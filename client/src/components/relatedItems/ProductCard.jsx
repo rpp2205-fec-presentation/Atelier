@@ -2,6 +2,9 @@ import React from 'react';
 import ComparisonModal from './ComparisonModal.jsx';
 import stars from '../helpers/stars.js';
 import calculateAverageRating from '../helpers/calculateAverageRating.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX, faStar } from '@fortawesome/free-solid-svg-icons'
+
 
 const axios = require('axios');
 
@@ -15,7 +18,8 @@ class ProductCard extends React.Component {
       starRating: 0,
       isOnSale: false,
       salesPrice: 0,
-      imgUrl: ''
+      imgUrl: '',
+      actionButtonIcon: faStar
     }
 
     this.updateProduct = this.updateProduct.bind(this);
@@ -28,7 +32,6 @@ class ProductCard extends React.Component {
 
   takeAction(e) {
     e.stopPropagation();
-    console.log('HI');
   }
 
   componentDidMount() {
@@ -92,7 +95,9 @@ class ProductCard extends React.Component {
 
   render() {
     return (<div id='product-card' onClick={() => {this.updateProduct()}}>
-      <button id='ri-action-button' onClick={(e) => {this.takeAction(e)}}></button>
+      <button id='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
+        <FontAwesomeIcon icon={this.state.actionButtonIcon} />
+      </button>
       <div id='ri-image-block'>
         <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
       </div>

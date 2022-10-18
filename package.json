@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/rpp2205-fec-presentation/Atelier#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "date-fns": "^2.29.3",
