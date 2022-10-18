@@ -15,7 +15,6 @@ class Outfits extends React.Component {
   }
 
   handleActionButton(productId) {
-    console.log(productId);
     var tempOutfits = [];
 
     for (var outfit of this.state.outfits) {

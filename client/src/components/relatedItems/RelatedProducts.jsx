@@ -29,7 +29,7 @@ class RelatedProducts extends React.Component {
   }
 
   handleActionButton(productId) {
-    console.log('RELATED PRODUCT');
+    console.log('DISPLAY MODAL');
   }
 
   componentDidMount() {
