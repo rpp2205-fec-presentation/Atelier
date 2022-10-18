@@ -53,10 +53,10 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
     setCountHelpful(review.helpfulness)
   }, []);
 
-  const handleHelpfulClick = (e, review_id) => {
+  const handleHelpfulClick = (e) => {
     e.preventDefault();
     if(!isHelpful) {
-      axios.put(`/reviews/${review_id}/helpful`)
+      axios.put(`/reviews/${review.review_id}/helpful`)
         .then(() => {
           alert('You have marked this review as helpful')
           setIsHelpful(true);
@@ -66,9 +66,9 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
     }
   }
 
-  const handleReportClick = (e, review_id) => {
+  const handleReportClick = (e) => {
     e.preventDefault();
-    axios.put(`/reviews/${review_id}/report`)
+    axios.put(`/reviews/${review.review_id}/report`)
       .then(() => {
         alert('You have reported this review')
         setIsReported(true);

@@ -10,6 +10,7 @@ export const RateVal = styled.div`
   padding: 2px;
   cursor: pointer;
   text-decoration: underline;
+  width: auto;
 `;
 
 export const BDContainer = styled.div`
@@ -34,14 +35,8 @@ export const AvgRatingStyle = styled.div`
 export const DivCent = styled.div`
 width: 85%;
 margin: 10px auto;
-padding-top: 50px
+padding: 50px
 `;
-
-// export const InnerDiv = styled.div`
-//   width: 90%;
-//   height: auto;
-//   margin: 0 auto;
-// `;
 
 export const ReviewsContainer = styled.div`
     border-radius: 15px;

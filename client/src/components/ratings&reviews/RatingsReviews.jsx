@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RatingsBD from './RatingsBD.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import axios from 'axios';
@@ -9,6 +9,10 @@ import { RateBD, RList, ReviewsContainer, DivCent, InnerDiv } from './ReviewsSty
 const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, filter, setFilter, sorted, setSorted }) => {
   const [showMore, setShowMore] = useState(true);
   const [displayedReviews, setDisplayedReviews] = useState(2);
+
+  useEffect(() => {
+    setDisplayedReviews(2);
+  }, [product_id])
 
   return (
       <DivCent>

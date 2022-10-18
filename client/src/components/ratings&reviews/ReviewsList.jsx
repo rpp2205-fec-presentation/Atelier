@@ -39,7 +39,7 @@ const ReviewsList = ({
         })}
       </ReviewsListStyle>
       <div>
-        {showMore ? <ListButton onClick={moreReviews}>More Reviews</ListButton> : <ListButton disable={true}>No More Reviews</ListButton>}
+        {showMore ? <ListButton onClick={moreReviews}>More Reviews</ListButton> : <></>}
       </div>
     </div>
   )
