@@ -10,13 +10,20 @@ class Outfits extends React.Component {
       productId: 71697,
       outfits: [71697, 71698, 71699]
     }
+
+    this.handleActionButton = this.handleActionButton.bind(this);
+
+  }
+
+  handleActionButton(e) {
+    console.log('OUTFIT');
   }
 
   render() {
     return (<div id='outfits'>
       <h3>Outfits</h3>
       {this.state.outfits.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX}/>)}
+        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton}/>)}
     </div>)
   }
 }

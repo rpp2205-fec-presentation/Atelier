@@ -7,11 +7,11 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 71697,
       relatedProducts: [71697, 71698, 71699]
     }
 
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
+    this.handleActionButton = this.handleActionButton.bind(this);
   }
 
   getRelatedProducts(productId) {
@@ -28,6 +28,10 @@ class RelatedProducts extends React.Component {
     })
   }
 
+  handleActionButton(e) {
+    console.log('RELATED PRODUCT');
+  }
+
   componentDidMount() {
     this.getRelatedProducts(this.props.productId);
   }
@@ -36,7 +40,7 @@ class RelatedProducts extends React.Component {
     return (<div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar}/>)}
+        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
     </div>)
   }
 }
