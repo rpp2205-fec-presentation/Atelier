@@ -31,7 +31,7 @@ class ProductCard extends React.Component {
 
   takeAction(e) {
     e.stopPropagation();
-    this.props.actionClick();
+    this.props.actionClick(this.props.productId);
   }
 
   componentDidMount() {

@@ -12,11 +12,19 @@ class Outfits extends React.Component {
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
-
   }
 
-  handleActionButton(e) {
-    console.log('OUTFIT');
+  handleActionButton(productId) {
+    console.log(productId);
+    var tempOutfits = [];
+
+    for (var outfit of this.state.outfits) {
+      if (outfit !== productId) {
+        tempOutfits.push(outfit);
+      }
+    }
+
+    this.setState({outfits: tempOutfits});
   }
 
   render() {

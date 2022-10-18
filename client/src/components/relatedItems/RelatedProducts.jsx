@@ -28,7 +28,7 @@ class RelatedProducts extends React.Component {
     })
   }
 
-  handleActionButton(e) {
+  handleActionButton(productId) {
     console.log('RELATED PRODUCT');
   }
 
