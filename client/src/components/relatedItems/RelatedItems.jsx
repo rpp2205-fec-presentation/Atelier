@@ -13,7 +13,7 @@ class RelatedItems extends React.Component {
     return (<div id='related-items-and-comparisons'>
       <h2>Related Items and Comparison</h2>
       <RelatedProducts productId={this.props.productId} setNewProductId={this.props.setNewProductId}/>
-      <Outfits />
+      <Outfits setNewProductId={this.props.setNewProductId}/>
     </div>)
   }
 }
