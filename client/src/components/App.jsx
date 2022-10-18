@@ -3,6 +3,7 @@ import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 
 const App = () => {
@@ -63,7 +64,9 @@ const App = () => {
 
     return (<div>
       <Overview />
-      <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
+      <ErrorBoundary>
+        <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
+      </ErrorBoundary>
       <RatingsReviews
       product_id={product_id}
       reviews={reviews}
