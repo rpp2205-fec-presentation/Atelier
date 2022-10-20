@@ -5,7 +5,7 @@ import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import stars from '../helpers/stars.js';
 import { PrctScaleChar, RatingsAvgByStar } from './PrctScaleChar.jsx';
 // import RatingsAvgByStar from './RatingsAvgByStar.jsx';
-import { ScaleText, RateVal, BDContainer, RateRight } from './ReviewsStyles.jsx';
+import { ScaleText, RateVal, BDContainer, RateRight, AvgRatingStyle } from './ReviewsStyles.jsx';
 import { reviewsFilter } from '../helpers/reviewsHelpers.js';
 
 const RatingsBD = ({ productId, metaData, ratings, filter, setFilter, reviews, setReviews }) => {
@@ -92,19 +92,22 @@ const RatingsBD = ({ productId, metaData, ratings, filter, setFilter, reviews, s
     if (filter === filterClicked) {
       filterClicked = 0;
       }
-
     setFilter(filterClicked);
-
-    console.log(filterClicked);
   };
+
+  const percentRecommend = (metaData) => {
+    let percent = 0;
+    let total = parseInt(metaData.recommended.true) + parseInt(metaData.recommended.false);
+    if (total > 0) {
+      percent = Math.round((metaData.recommended.true / total) * 100);
+    }
+    return percent;
+  }
 
   return (
     <BDContainer>
-      <h3> Rating Breakdown </h3>
-      <h2>Overall Rating</h2>
-      <h1>{avgRating(ratings)}</h1>
-      <h4>{stars(avgRating(ratings))}</h4>
-      <h2>Ratings By Stars</h2>
+      <AvgRatingStyle>{avgRating(ratings)} {stars(avgRating(ratings))}</AvgRatingStyle>
+      <p>{percentRecommend(metaData)}% of reviews recommend this product</p>
       <div>{Object.keys(theRatings).slice(0).reverse().map(rating => {
             return <RateVal key={rating}><span id={rating} onClick={handleFilterClick}>{rating} Stars:</span>
             <RateRight><RatingsAvgByStar value={theRatings[rating]} /></RateRight>

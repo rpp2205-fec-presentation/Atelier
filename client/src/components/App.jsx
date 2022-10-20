@@ -3,6 +3,7 @@ import axios from 'axios';
 import Overview from './overview/Overview.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 
 const App = () => {
@@ -13,7 +14,7 @@ const App = () => {
   const [metaData, setMetaData] = useState();
   const [filter, setFilter] = useState(0);
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
-  const [sorted, setSorted] = useState('relevant');
+  const [sorted, setSorted] = useState('newest');
 
 
 
@@ -48,7 +49,7 @@ const App = () => {
     } else {
       getData(product_id);
     }
-    setSorted('relevant');
+    setSorted('newest');
     setFilter(0);
   }, [product_id]);
 
@@ -62,18 +63,24 @@ const App = () => {
   if (pageLoading) { return 'Page is Loading'}
 
     return (<div>
-      <Overview productId={product_id} />
-      <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
-      <RatingsReviews
-      product_id={product_id}
-      reviews={reviews}
-      setReviews={setReviews}
-      metaData={metaData}
-      ratings={ratings}
-      filter={filter}
-      setFilter={setFilter}
-      sorted={sorted}
-      setSorted={setSorted} />
+      <ErrorBoundary>
+        <Overview productId={product_id} />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <RatingsReviews
+        product_id={product_id}
+        reviews={reviews}
+        setReviews={setReviews}
+        metaData={metaData}
+        ratings={ratings}
+        filter={filter}
+        setFilter={setFilter}
+        sorted={sorted}
+        setSorted={setSorted} />
+      </ErrorBoundary>
     </div>)
 
 }

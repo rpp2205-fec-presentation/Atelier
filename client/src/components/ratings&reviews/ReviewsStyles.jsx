@@ -7,8 +7,10 @@ export const ScaleText = styled.span`
 `;
 
 export const RateVal = styled.div`
-  border-bottom: 1px dotted black;
+  padding: 2px;
   cursor: pointer;
+  text-decoration: underline;
+  width: auto;
 `;
 
 export const BDContainer = styled.div`
@@ -19,19 +21,21 @@ export const RateRight = styled.span`
   float: right;
 `;
 
+export const AvgRatingStyle = styled.div`
+  flex: 1;
+  height: 50;
+  padding: 50;
+  font-size: 65px;
+  font-weight: 600;
+`;
 
 
 /* RatingsReviews Styling */
 
 export const DivCent = styled.div`
-width: 100%;
+width: 85%;
 margin: 10px auto;
-`;
-
-export const InnerDiv = styled.div`
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
+padding: 50px
 `;
 
 export const ReviewsContainer = styled.div`
@@ -43,7 +47,6 @@ export const RateBD = styled.div`
   float: left;
   position: absolute;
   margin: 10px auto;
-  padding: 0 1%;
   width: 25%;
   height: 1000px;
   overflow: auto;
@@ -54,7 +57,6 @@ export const RList = styled.div`
   float: right;
   width: 65%;
   left: 25%;
-  overflow: auto;
 `;
 
 /* Review Tile */
@@ -108,11 +110,11 @@ export const TextCent = styled.span`
   padding-left: 10px
 `;
 export const BodyText = styled.div`
-text-align: left;
-font-size: 14px;
-margin-left: 5px;
-margin-top: 5px;
-color: 696969;
+  text-align: left;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-top: 5px;
+  color: 696969;
 `;
 
 export const ShowMore = styled.span`
@@ -134,9 +136,26 @@ export const ImgThumbnail = styled.img`
   width: 50px;
   height: 50px;
   margin: 3px;
+  cursor: pointer;
 `;
 
 export const HelpfulLine = styled.div`
   display: inline-flex;
   gap: 5px;
+`;
+
+/* Reviews List */
+
+export const ListButton = styled.button`
+  padding: 10px;
+  position: relative;
+  top: 10px;
+  left: 40px;
+  background: #FFFFFF;
+`;
+
+export const ReviewsListStyle = styled.div`
+  height: 550px;
+  overflow: auto;
+  padding: 5px;
 `;

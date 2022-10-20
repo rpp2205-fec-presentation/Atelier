@@ -2,7 +2,7 @@ require("dotenv").config();
 const axios = require('axios');
 const express = require('express');
 const AUTH_TOKEN = require('../config.js');
-
+const compression = require('compression');
 const logger = require("./middleware/logger");
 
 const app = express();
@@ -10,7 +10,7 @@ const port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded());
-
+app.use(compression());
 app.use(logger);
 app.use(express.static(__dirname + '/../client/dist'));
 
