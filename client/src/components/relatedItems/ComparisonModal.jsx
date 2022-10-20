@@ -11,7 +11,7 @@ class ComparisonModal extends React.Component {
       return null;
     } else {
       return (
-      <div className='comparison-modal'>
+      <div id='comparison-modal'>
         <div>Comparison Modal</div>
       </div>)
     }
