@@ -72,9 +72,9 @@ class ProductInfo extends React.Component {
           } = this.state;
     return (
       <div id="po-product-info">
-        <h5>Product Info</h5>
-        <h4>{stars(ratings)}</h4>
-        {/* {console.log('info>>>', this.state)} */}
+        <section>
+          <span>{stars(ratings)}</span>
+        </section>
         <ProductCategory category={category} name={name} />
         <ProductPrice price={originalPrice} />
         <ProductStyle id={id} />
