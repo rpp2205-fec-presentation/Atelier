@@ -73,8 +73,6 @@ class ProductCard extends React.Component {
             imgUrl = '../images/fullstar.jpeg';
           }
 
-          console.log(imgUrl);
-
           if (style.sale_price !== null) {
             isOnSale = true;
             salesPrice = style.sale_price;

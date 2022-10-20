@@ -138,3 +138,10 @@
   font-size: 16px;
  }
 
+ .comparison-table {
+  background-color: plum;
+ }
+
+ td, th {
+  text-align: center;
+}
