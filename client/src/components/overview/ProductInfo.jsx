@@ -11,7 +11,7 @@ class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.id || 71697,
+      id: this.props.id,
       category: '',
       name: '',
       originalPrice: 0,
@@ -22,9 +22,8 @@ class ProductInfo extends React.Component {
     this.getProductById =this.getProductById.bind(this);
   }
 
-  getProductById() {
-    const { id,
-            category,
+  getProductById(id) {
+    const { category,
             name,
             originalPrice,
             ratings,
@@ -42,18 +41,25 @@ class ProductInfo extends React.Component {
           ratings : avgRating
         }))
       this.setState({
+        id : res.data.id,
         category : res.data.category,
         name : res.data.name,
         originalPrice : res.data.default_price,
-        slogan: res.data.slogan,
-        description: res.data.description,
+        slogan : res.data.slogan,
+        description : res.data.description,
       })
     })
   }
 
   componentDidMount() {
-    this.getProductById();
+    this.getProductById(this.props.id);
   }
+
+
+  componentWillReceiveProps(nextProps) {
+    this.getProductById(nextProps.id);
+  }
+
 
   render () {
     const { id,
@@ -68,7 +74,7 @@ class ProductInfo extends React.Component {
       <div id="po-product-info">
         <h5>Product Info</h5>
         <h4>{stars(ratings)}</h4>
-        {console.log('info', this.state)}
+        {/* {console.log('info>>>', this.state)} */}
         <ProductCategory category={category} name={name} />
         <ProductPrice price={originalPrice} />
         <ProductStyle id={id} />

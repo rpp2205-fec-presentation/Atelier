@@ -14,11 +14,11 @@ class ProductStyle extends React.Component {
     this.getData = this.getData.bind(this);
   }
 
-  getData() {
-    getStyleInfoById(this.props.id)
+  getData(id) {
+    getStyleInfoById(id)
       .then(data => {
         const newDefaultStyle =  data.filter(res => res['default?'] ===  true)['0'];
-        var newImages = [...this.state.images]
+        var newImages = []
         var newData = [...this.state.data]
         var newData = [...data]
         data.map((res, idx) => {
@@ -34,8 +34,13 @@ class ProductStyle extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
+    this.getData(this.props.id);
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.getData(nextProps.id);
+  }
+
 
   render() {
     const { data, images, defaultStyle, selectedStyle } = this.state;
