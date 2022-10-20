@@ -51,11 +51,13 @@ class SelectedMain extends React.Component {
     );
 
     return (
-      <div>
-        {selectedProductImg}
-        <ThubnailProductImg className="po-global-thumbnails" selectedImages={this.props.selectedImages} mainIdx={mainIdx} thumbnailClick={this.thumbnailClickHandler} />
-        <BsArrowLeftShort className="po-left-arrow clickable" onClick={this.leftClickHandler} />
-        <BsArrowRightShort className="po-right-arrow clickable" onClick={this.rightClickHandler} />
+      <div className="po-main">
+        <div id="po-all-image">
+          {selectedProductImg}
+          <ThubnailProductImg selectedImages={this.props.selectedImages} mainIdx={mainIdx} thumbnailClick={this.thumbnailClickHandler} />
+          <BsArrowLeftShort className="po-left-arrow clickable" onClick={this.leftClickHandler} />
+          <BsArrowRightShort className="po-right-arrow clickable" onClick={this.rightClickHandler} />
+        </div>
       </div>
     );
   }

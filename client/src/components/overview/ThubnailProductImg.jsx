@@ -9,7 +9,7 @@ class ThubnailProductImg extends React.Component {
   render() {
     const { selectedImages, thumbnailClick } = this.props;
     return (
-      <div>
+      <div className="po-global-thumbnails">
         {selectedImages.map((img, idx) => (
           <img
             className="po-each-thumbnail"
