@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 const axios = require('axios');
 
@@ -7,7 +8,8 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedProducts: [71697, 71698, 71699]
+      relatedProducts: [71697, 71698, 71699],
+      showModal: false
     }
 
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
@@ -29,6 +31,9 @@ class RelatedProducts extends React.Component {
   }
 
   handleActionButton(productId) {
+    var newState = !this.state.showModal;
+    this.setState({showModal: newState});
+
     console.log('DISPLAY MODAL');
   }
 
@@ -37,10 +42,12 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    return (<div id='related-products'>
+    return (
+    <div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
         <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
+      <ComparisonModal show={this.state.showModal} />
     </div>)
   }
 }

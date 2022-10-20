@@ -64,7 +64,6 @@ const App = () => {
 
     return (<div>
       <ErrorBoundary>
-        <Overview />
       </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>

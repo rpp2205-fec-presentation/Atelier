@@ -6,9 +6,16 @@ class ComparisonModal extends React.Component {
   }
 
   render() {
-    return (<div className='comparison-modal'>
-      <div>Comparison Modal</div>
-    </div>)
+
+    if (this.props.show === false) {
+      return null;
+    } else {
+      return (
+      <div className='comparison-modal'>
+        <div>Comparison Modal</div>
+      </div>)
+    }
+
   }
 }
 
