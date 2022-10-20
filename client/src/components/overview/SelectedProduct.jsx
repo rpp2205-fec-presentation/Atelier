@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import SelectedMain from "./SelectedMain.jsx";
 
 const SelectedProduct = ({ selectedStyle }) => {
   return (
     <div>
-      {console.log('SelectedProduct>>', selectedStyle.photos)}
       {selectedStyle.photos ?
-        selectedStyle.photos.map((res, idx) => (
-          <img key={idx} src={res.thumbnail_url} alt="Selected Style Photo" />
-        ))
+        <SelectedMain selectedImages={selectedStyle.photos} />
       :
       "Loading..."
       }
-      <br />
     </div>
   )
 }
