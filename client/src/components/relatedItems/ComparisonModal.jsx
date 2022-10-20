@@ -13,6 +13,8 @@ class ComparisonModal extends React.Component {
       return (
       <div id='comparison-modal'>
         <div>Comparison Modal</div>
+        {this.props.currentProductId}
+        {this.props.comparisonProductId}
       </div>)
     }
 
