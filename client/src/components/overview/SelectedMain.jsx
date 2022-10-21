@@ -41,7 +41,7 @@ class SelectedMain extends React.Component {
   render () {
     const { mainIdx, zoom } = this.state;
     const { selectedImages } = this.props;
-    let selectedProductImg, thubnailProductImg;
+    let selectedProductImg;
     selectedProductImg = (
       <img
         id="po-large-img"

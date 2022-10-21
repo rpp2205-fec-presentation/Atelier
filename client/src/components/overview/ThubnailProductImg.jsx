@@ -3,9 +3,8 @@ import React from "react";
 class ThubnailProductImg extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
+
   render() {
     const { selectedImages, thumbnailClick } = this.props;
     return (

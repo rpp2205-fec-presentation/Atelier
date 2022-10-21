@@ -55,11 +55,11 @@ class ProductInfo extends React.Component {
     this.getProductById(this.props.id);
   }
 
-
-  componentWillReceiveProps(nextProps) {
-    this.getProductById(nextProps.id);
+  componentDidUpdate(prevProps) {
+    if (prevProps.id !== this.props.id) {
+      this.getProductById(this.props.id);
+    }
   }
-
 
   render () {
     const { id,
@@ -71,7 +71,7 @@ class ProductInfo extends React.Component {
             description
           } = this.state;
     return (
-      <div id="po-product-info">
+      <div className="po-product-info">
         <section>
           <span>{stars(ratings)}</span>
         </section>
