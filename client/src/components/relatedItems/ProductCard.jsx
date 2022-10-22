@@ -67,7 +67,12 @@ class ProductCard extends React.Component {
       for (var style of styles) {
         if (style['default?']) {
           originalPrice = style.original_price;
+
           imgUrl = style.photos[0].url;
+          if (imgUrl === null) {
+            imgUrl = '../images/fullstar.jpeg';
+          }
+
           if (style.sale_price !== null) {
             isOnSale = true;
             salesPrice = style.sale_price;
@@ -94,17 +99,17 @@ class ProductCard extends React.Component {
 
 
   render() {
-    return (<div id='product-card' onClick={() => {this.updateProduct()}}>
-      <button id='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
+    return (<div className='product-card' onClick={() => {this.updateProduct()}}>
+      <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
         <FontAwesomeIcon icon={this.props.actionButtonIcon} />
       </button>
-      <div id='ri-image-block'>
-        <img id='ri-image' src={this.state.imgUrl} alt='product image'></img>
+      <div className='ri-image-block'>
+        <img className='ri-image' src={this.state.imgUrl} alt='product image'></img>
       </div>
-      <div id='ri-product-info'>
-        <div id='ri-category'>{this.state.productCategory}</div>
-        <div id='ri-product-name'>{this.state.productName}</div>
-        <div id='ri-original-price'>${this.state.originalPrice}</div>
+      <div className='ri-product-info'>
+        <div className='ri-category'>{this.state.productCategory}</div>
+        <div className='ri-product-name'>{this.state.productName}</div>
+        <div className='ri-original-price'>${this.state.originalPrice}</div>
         <div>{stars(this.state.starRating)}</div>
       </div>
     </div>)

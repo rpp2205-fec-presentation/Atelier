@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from './ProductCard.jsx';
+import ComparisonModal from './ComparisonModal.jsx';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 const axios = require('axios');
 
@@ -7,7 +8,9 @@ class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      relatedProducts: [71697, 71698, 71699]
+      relatedProducts: [71697, 71698, 71699],
+      showModal: false,
+      comparisonProductId: 71697
     }
 
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
@@ -29,7 +32,8 @@ class RelatedProducts extends React.Component {
   }
 
   handleActionButton(productId) {
-    console.log('DISPLAY MODAL');
+    var newState = !this.state.showModal;
+    this.setState({showModal: newState, comparisonProductId: productId});
   }
 
   componentDidMount() {
@@ -37,10 +41,17 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    return (<div id='related-products'>
+    var modal = null;
+
+    if (this.state.showModal) {
+      modal = <ComparisonModal show={this.state.showModal} currentProductId={this.props.productId} comparisonProductId={this.state.comparisonProductId}/>
+    }
+    return (
+    <div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
         <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
+      {modal}
     </div>)
   }
 }
