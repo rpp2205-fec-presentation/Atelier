@@ -58,14 +58,24 @@ const App = () => {
       });
   }, [sorted, filter])
 
+  const clickTracking = (e, widgetName) => {
+    axios.post('/interactions', {
+      element: e.target.outerHTML,
+      widget: widgetName,
+      time: new Date()
+    })
+      // .then((res) => console.log('Click Tracked', res))
+      .catch(err => console.log(err))
+  }
+
   if (pageLoading) { return 'Page is Loading'}
 
     return (<div>
       <ErrorBoundary>
-        <Overview productId={product_id} />
+        <Overview productId={product_id} clickTracking={clickTracking} />
       </ErrorBoundary>
       <ErrorBoundary>
-        <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
+        <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId} clickTracking={clickTracking} />
       </ErrorBoundary>
       <ErrorBoundary>
         <RatingsReviews
@@ -77,7 +87,8 @@ const App = () => {
         filter={filter}
         setFilter={setFilter}
         sorted={sorted}
-        setSorted={setSorted} />
+        setSorted={setSorted}
+        clickTracking={clickTracking} />
       </ErrorBoundary>
     </div>)
 

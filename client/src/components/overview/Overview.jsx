@@ -8,7 +8,7 @@ class Overview extends React.Component {
 
   render () {
     return (
-      <div className="po-container">
+      <div className="po-container" onClick={e => this.props.clickTracking(e, 'Product Overview')}>
         <ProductInfo id={this.props.productId} />
       </div>
     )
