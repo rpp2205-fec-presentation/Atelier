@@ -55,9 +55,9 @@ class ComparisonModal extends React.Component {
       <table className='ri-comparison-table'>
         <thead>
           <tr>
-            <th>{currentProductName}</th>
+            <th>{this.state.currentProductName}</th>
             <th></th>
-            <th>{comparisonProductName}</th>
+            <th>{this.state.comparisonProductName}</th>
           </tr>
         </thead>
         <tbody>
@@ -119,7 +119,7 @@ class ComparisonModal extends React.Component {
     } else {
       return (
       <div id='comparison-modal'>
-        {this.generateComparisonInfo(this.state.currentProductName, this.state.comparisonProductName)}
+        {this.generateComparisonInfo()}
       </div>)
     }
 
