@@ -6,7 +6,7 @@ import calculateAverageRating from '../helpers/calculateAverageRating.js';
 import { RateBD, RList, ReviewsContainer, DivCent, InnerDiv } from './ReviewsStyles.jsx';
 
 
-const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, filter, setFilter, sorted, setSorted }) => {
+const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, filter, setFilter, sorted, setSorted, clickTracking }) => {
   const [showMore, setShowMore] = useState(true);
   const [displayedReviews, setDisplayedReviews] = useState(2);
 
@@ -15,7 +15,7 @@ const RatingsReviews = ({ product_id, reviews, setReviews, metaData, ratings, fi
   }, [product_id])
 
   return (
-      <DivCent>
+      <DivCent onClick={e => clickTracking(e, 'Ratings and Reviews')}>
         <h2>Ratings & Reviews</h2>
           <ReviewsContainer>
             <RateBD>
