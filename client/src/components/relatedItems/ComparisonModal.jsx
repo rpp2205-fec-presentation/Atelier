@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 const axios = require('axios');
 
 
@@ -9,14 +7,16 @@ class ComparisonModal extends React.Component {
     super(props);
     this.state = {
       currentProductFeatures: [],
-      comparisonProductFeatures: []
+      comparisonProductFeatures: [],
+      currentProductName: '',
+      comparisonProductName: ''
     }
 
     this.generateComparisonInfo = this.generateComparisonInfo.bind(this);
     this.getProductFeatures = this.getProductFeatures.bind(this);
   }
 
-  generateComparisonInfo() {
+  generateComparisonInfo(currentProductName, comparisonProductName) {
 
     var comparisonInfo = {};
 
@@ -38,12 +38,11 @@ class ComparisonModal extends React.Component {
     var tempTableVals = [];
 
     for (var feature in comparisonInfo) {
-      console.log(feature);
       if (comparisonInfo[feature].length === 1) {
         comparisonInfo[feature].push(null);
       }
 
-      var tempDiv = <tr>
+      var tempDiv = <tr key={feature}>
         <td>{comparisonInfo[feature][0] === true ? '✓' : comparisonInfo[feature][0]}</td>
         <td>{feature}</td>
         <td>{comparisonInfo[feature][1] === true ? '✓' : comparisonInfo[feature][1]}</td>
@@ -54,12 +53,14 @@ class ComparisonModal extends React.Component {
 
     return (
       <table className='ri-comparison-table'>
-        <tbody>
+        <thead>
           <tr>
-            <th>{this.props.currentProductId}</th>
+            <th>{currentProductName}</th>
             <th></th>
-            <th>{this.props.comparisonProductId}</th>
+            <th>{comparisonProductName}</th>
           </tr>
+        </thead>
+        <tbody>
           {tempTableVals}
         </tbody>
       </table>
@@ -84,14 +85,29 @@ class ComparisonModal extends React.Component {
   }
 
   componentDidMount() {
+
     Promise.all([
       this.getProductFeatures(this.props.currentProductId, 'currentProductFeatures'),
-      this.getProductFeatures(this.props.comparisonProductId, 'comparisonProductFeatures')
-    ]).then(()=> {
-      //console.log(this.state.currentProductFeatures);
-      //console.log(this.state.comparisonProductFeatures);
+      this.getProductFeatures(this.props.comparisonProductId, 'comparisonProductFeatures'),
+      axios({
+        method: 'get',
+        url: `/products/${this.props.currentProductId}`,
+        params: {product_id: this.props.currentProductId}
+      }),
+      axios({
+        method: 'get',
+        url: `/products/${this.props.comparisonProductId}`,
+        params: {product_id: this.props.procomparisonProductIdductId}
+      })
+    ]).then((results)=> {
 
-      this.generateComparisonInfo();
+      this.setState({
+        currentProductName: results[2].data.name,
+        comparisonProductName: results[3].data.name
+      });
+
+    }).catch(err => {
+      console.log(err);
     })
 
   }
@@ -103,9 +119,7 @@ class ComparisonModal extends React.Component {
     } else {
       return (
       <div id='comparison-modal'>
-        <div>
-          {this.generateComparisonInfo(this.props.currentProductId, this.props.comparisonProductId)}
-        </div>
+        {this.generateComparisonInfo(this.state.currentProductName, this.state.comparisonProductName)}
       </div>)
     }
 
