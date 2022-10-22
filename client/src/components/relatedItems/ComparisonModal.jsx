@@ -44,20 +44,20 @@ class ComparisonModal extends React.Component {
       }
 
       var tempDiv = <tr>
-        <td>{comparisonInfo[feature][0]}</td>
-        <td className='ri-table-feature'>{feature}</td>
-        <td>{comparisonInfo[feature][1]}</td>
+        <td>{comparisonInfo[feature][0] === true ? '✓' : comparisonInfo[feature][0]}</td>
+        <td>{feature}</td>
+        <td>{comparisonInfo[feature][1] === true ? '✓' : comparisonInfo[feature][1]}</td>
       </tr>
 
       tempTableVals.push(tempDiv);
     }
 
     return (
-      <table className='comparison-table'>
+      <table className='ri-comparison-table'>
         <tbody>
           <tr>
             <th>{this.props.currentProductId}</th>
-            <th>CHECKS</th>
+            <th></th>
             <th>{this.props.comparisonProductId}</th>
           </tr>
           {tempTableVals}
