@@ -14,7 +14,7 @@ const App = () => {
   const [metaData, setMetaData] = useState();
   const [filter, setFilter] = useState(0);
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
-  const [sorted, setSorted] = useState('relevant');
+  const [sorted, setSorted] = useState('newest');
 
 
 
@@ -48,7 +48,7 @@ const App = () => {
     } else {
       getData(product_id);
     }
-    setSorted('relevant');
+    setSorted('newest');
     setFilter(0);
   }, [product_id]);
 
@@ -63,6 +63,7 @@ const App = () => {
 
     return (<div>
       <ErrorBoundary>
+        <Overview productId={product_id} />
       </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>

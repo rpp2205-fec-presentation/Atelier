@@ -8,9 +8,8 @@ class Overview extends React.Component {
 
   render () {
     return (
-      <div>
-        <h2>Overview</h2>
-        <ProductInfo />
+      <div className="po-container">
+        <ProductInfo id={this.props.productId} />
       </div>
     )
   }
