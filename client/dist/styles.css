@@ -126,6 +126,7 @@
  }
 
  #comparison-modal {
+  background-color: plum;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -133,10 +134,10 @@
   width: 500px;
   height: 250px;
   overflow: auto;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
  }
 
  .ri-comparison-table {
-  background-color: plum;
   border-collapse: collapse;
   width: 100%;
  }
