@@ -41,12 +41,17 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
+    var modal = null;
+
+    if (this.state.showModal) {
+      modal = <ComparisonModal show={this.state.showModal} currentProductId={this.props.productId} comparisonProductId={this.state.comparisonProductId}/>
+    }
     return (
     <div id='related-products'>
       <h3>Related Products</h3>
       {this.state.relatedProducts.map((productId) =>
         <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
-      <ComparisonModal show={this.state.showModal} currentProductId={this.props.productId} comparisonProductId={this.state.comparisonProductId}/>
+      {modal}
     </div>)
   }
 }

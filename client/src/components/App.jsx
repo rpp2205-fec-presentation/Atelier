@@ -9,7 +9,6 @@ import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 const App = () => {
   const [product_id, setId] = useState(71697);
   const [pageLoading, setPageLoading] = useState(true);
-
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
   const [filter, setFilter] = useState(0);
@@ -63,7 +62,7 @@ const App = () => {
 
     return (<div>
       <ErrorBoundary>
-        <Overview productId={product_id} />
+        {/*<Overview productId={product_id} />*/}
       </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId}/>
