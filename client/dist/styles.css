@@ -64,13 +64,15 @@
  }
 
  #related-products, #outfits {
-  background-color: darkgray;
+  background-color: rgb(92, 39, 39);
   margin: 10px;
   padding: 10px;
+  overflow-x: scroll;
+  white-space: nowrap;
  }
 
  #related-items-and-comparisons{
-  display: inline-block;
+  position: relative;
   background-color: lightgrey;
   padding: 10px;
   margin: 5px;
