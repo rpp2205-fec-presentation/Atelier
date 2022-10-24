@@ -38,8 +38,6 @@ class RelatedProducts extends React.Component {
     this.setState({showModal: newState, comparisonProductId: productId});
   }
 
-
-
   componentDidMount() {
     this.getRelatedProducts(this.props.productId);
   }
