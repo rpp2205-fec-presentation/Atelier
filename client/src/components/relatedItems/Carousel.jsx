@@ -38,10 +38,6 @@ class Carousel extends React.Component {
     var scroller = document.getElementById(this.props.sliderComp);
     var productPixelLength = this.props.products.length * 250;
 
-    console.log(this.props.sliderComp);
-    console.log(window.innerWidth);
-    console.log(productPixelLength - location);
-
     if (this.state.showLeftButton && location <= 0) {
       this.setState({showLeftButton: false});
     } else if (!this.state.showLeftButton && location > 0){
@@ -62,7 +58,7 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    //window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener('resize', this.handleWindowResize);
     this.checkSliders(0);
   }
 
