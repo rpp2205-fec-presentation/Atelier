@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard.jsx';
+import Carousel from './Carousel.jsx';
 import { faX } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -8,7 +8,7 @@ class Outfits extends React.Component {
     super(props);
     this.state = {
       productId: 71697,
-      outfits: [71697, 71698, 71699]
+      outfits: [71697, 71698, 71699, 71698, 71699]
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
@@ -29,8 +29,7 @@ class Outfits extends React.Component {
   render() {
     return (<div id='outfits'>
       <h3>Outfits</h3>
-      {this.state.outfits.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton}/>)}
+      <Carousel products={this.state.outfits} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton} sliderComp='carousel-outfit'/>
     </div>)
   }
 }

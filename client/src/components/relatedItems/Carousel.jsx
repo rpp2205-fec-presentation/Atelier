@@ -12,7 +12,7 @@ class Carousel extends React.Component {
   }
 
   slideLeft() {
-    var scroller = document.getElementById('carousel-content');
+    var scroller = document.getElementById(this.props.sliderComp);
     console.log(scroller.scrollLeft);
 
     scroller.scrollLeft = scroller.scrollLeft - 260;
@@ -21,7 +21,7 @@ class Carousel extends React.Component {
   }
 
   slideRight() {
-    var scroller = document.getElementById('carousel-content');
+    var scroller = document.getElementById(this.props.sliderComp);
     scroller.scrollLeft = scroller.scrollLeft + 260;
     console.log(scroller.scrollLeft);
   }
@@ -29,9 +29,9 @@ class Carousel extends React.Component {
   render() {
 
     return (
-      <div id='carousel'>
+      <div className='carousel'>
         <FontAwesomeIcon size='2x' icon={faChevronLeft} className='carousel-button left' onClick={this.slideLeft}/>
-        <div id='carousel-content'>
+        <div id={this.props.sliderComp}>
           {this.props.products.map((productId) =>
             <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={this.props.actionButtonIcon} actionClick={this.props.actionClick}/>)}
         </div>
