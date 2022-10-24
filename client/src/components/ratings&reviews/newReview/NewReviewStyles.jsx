@@ -6,7 +6,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background-color: rgba(128, 128, 128, 0.7);
+background-color: rgba(200, 200, 200, 0.9);
 z-index: 1000;
 `;
 
@@ -14,9 +14,12 @@ export const ModalForm = styled.div`
 position: fixed;
 top: 50%;
 left: 50%;
+height: 900px;
 width: 800px;
 transform: translate(-50%, -50%);
-background-color: #f4f0db;
+border-radius: 8px;
+background-color: #FFFFFF;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 color: black;
 padding: 50px;
 overflow-y: auto;
@@ -34,8 +37,7 @@ top: 0;
 border-radius: 5px;
 border: 1px solid black;
 cursor: pointer;
-color: white;
-text-shadow: 1px 0 black, 0 1px black, -1px 0 black, 0 -1px black;
+margin: 15px;
 `
 
 export const Remain = styled.p`

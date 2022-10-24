@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Ratings from "./Ratings.jsx";
+import Ratings from './Ratings.jsx'
 import CharRatings from './CharRatings.jsx';
 import ImageUpload from "./ImageUpload.jsx";
 import { Overlay, ModalForm, Missing, Close, Remain, Input, Submit } from './NewReviewStyles.jsx'
 import { reviewsCall } from '../../helpers/reviewsHelpers.js';
+import axios from 'axios';
 
 const NewReview = ({ productId, metaData, openModal, closeModal }) => {
   const [missingReq, setMissingReq] = useState(false);
@@ -25,7 +26,7 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
   const [email, setEmail] = useState("");
 
   const selectCharacteristic = (id, value) => {
-    setCharacteristics({...characteristics, [productId]: value})
+    setCharacteristics({...characteristics, [id]: value})
   };
 
   const summaryText = (e) => {
@@ -56,7 +57,7 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
   };
 
   const post = (data) => {
-    axios.post("/reviews", data, config)
+    axios.post("/reviews", data)
     .then(() => {
       reviewsCall();
     });
@@ -93,8 +94,9 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
     <Overlay>
       <ModalForm>
         {missingReq && <Missing>* Areas are required</Missing>}
-        <Close onClick={close}>X</Close>
+        <Close onClick={closeModal}>X</Close>
         <form onSubmit={checkForm}>
+          <h3>Write Your Review</h3>
           <Ratings
             rating={rating}
             hover={hover}
@@ -105,6 +107,7 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
 
           <label>
             Recommend:
+            {' '}
             <label>
               <input
                 type="radio"
@@ -112,7 +115,8 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
                 value="Yes"
                 onChange={() => setRecc(true)}
               />
-              Yes:
+              Yes
+              {' '}
             </label>
             <label>
               <input
@@ -121,14 +125,14 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
                 value="No"
                 onChange={() => setRecc(false)}
               />
-              No:
+              No
             </label>
             {missingReq && <Missing>* Required</Missing>}
           </label>
 
           <CharRatings
             metaData={metaData}
-            setChar={selectCharacteristic}
+            charData={metaData.characteristics}
           />
 
           <br />

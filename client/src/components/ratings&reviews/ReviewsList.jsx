@@ -45,16 +45,13 @@ const ReviewsList = ({
       </ReviewsListStyle>
       <div>
         {showMore ? <ListButton onClick={moreReviews}>More Reviews</ListButton> : <></>}
-        <br/>
-        <NewReview productId={productId} metaData={metaData} openModal={openModal} closeModal={() => setOpenModal(false)} />
+        {' '}
+        <ListButton onClick={() => setOpenModal(true)}>Add A Review +</ListButton>
       </div>
-
+      {openModal && <NewReview productId={productId} metaData={metaData} openModal={openModal} closeModal={() => setOpenModal(false)} />}
     </div>
   )
 }
-
-
-
 
 
 export default ReviewsList;
