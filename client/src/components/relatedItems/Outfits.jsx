@@ -8,7 +8,7 @@ class Outfits extends React.Component {
     super(props);
     this.state = {
       productId: 71697,
-      outfits: [71697, 71698, 71699, 71698, 71699]
+      outfits: [71697, 71698, 71699]
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
