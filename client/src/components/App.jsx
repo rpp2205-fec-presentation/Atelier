@@ -72,7 +72,7 @@ const App = () => {
 
     return (<div>
       <ErrorBoundary>
-        {/*<Overview productId={product_id} clickTracking={clickTracking} />*/}
+        <Overview productId={product_id} clickTracking={clickTracking} />
       </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId} clickTracking={clickTracking} />
