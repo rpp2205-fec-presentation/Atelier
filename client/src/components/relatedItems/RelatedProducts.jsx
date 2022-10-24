@@ -52,11 +52,12 @@ class RelatedProducts extends React.Component {
       <h3>Related Products</h3>
       <div id='carousel'>
         <FontAwesomeIcon size='2x' icon={faChevronLeft} className='carousel-button left'/>
-        <div id='carousel-content'></div>
+        <div id='carousel-content'>
+          {this.state.relatedProducts.map((productId) =>
+            <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
+        </div>
         <FontAwesomeIcon size='2x' icon={faChevronRight} className='carousel-button right'/>
       </div>
-      {this.state.relatedProducts.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
       {modal}
 
     </div>)
