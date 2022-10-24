@@ -58,60 +58,43 @@
  /* RELATED ITEMS AND COMPARISON FORMATTING */
 
  #related-items-and-comparisons{
-  background-color: lightgrey;
-  padding: 10px;
-  margin: 5px;
- }
-
- #related-products, #outfits {
-  background-color: darkgray;
-  margin: 10px;
-  padding: 10px;
- }
-
- #related-items-and-comparisons{
-  display: inline-block;
-  background-color: lightgrey;
-  padding: 10px;
-  margin: 5px;
- }
-
- .product-card{
-  display: inline-block;
-  background-color: lightgrey;
-  width: 240px;
-  height: 300px;
+  background-color:  #2196F3;
   position: relative;
-  text-align: center;
-  margin: 10px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
  }
 
  .ri-action-button {
   position: absolute;
   top: 10px;
   right: 10px;
+  cursor: pointer;
+  border-radius: 100%;
+  opacity: 0.75;
+  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
+ }
+
+ .ri-action-button:hover {
+  opacity: 1;
  }
 
  .ri-product-info {
   position: absolute;
   width: 90%;
   height: 25%;
-  background-color: beige;
   bottom: 10px;
   left: 5%;
+  border-radius: 5px;
  }
 
  .ri-image-block {
-  text-align: center;
-  width: 90%;
-  height: 70%;
-  left: 5%;
- }
-
- .ri-image {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
  }
 
  .ri-category, .ri-original-price {
@@ -135,6 +118,7 @@
   height: 250px;
   overflow: auto;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
+  z-index: 2;
  }
 
  .ri-comparison-table {
@@ -158,14 +142,69 @@
 td:nth-child(1), td:nth-child(3) {
   width: 150px;
   font-size: 10px;
-
 }
 
 td:nth-child(2) {
   width: 150px;
   font-weight: bold;
   font-size: 10px;
+}
 
+.carousel {
+  width: 100%;
+  height: 305px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+#carousel-outfit, #carousel-related-products {
+  width: 100%;
+  height: 100%;
+  background-color:  #2196F3;
+  white-space: nowrap;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+#carousel-outfit::-webkit-scrollbar, #carousel-related-products::-webkit-scrollbar{
+  display: none;
+}
+
+.carousel-button{
+  background-color: white;
+  border-radius: 100%;
+  position: absolute;
+  opacity: 0.5;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 12%);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carousel-button.left {
+  left: 0;
+}
+
+.carousel-button.right {
+  right: 0;
+}
+
+.carousel-button.left:hover, .carousel-button.right:hover {
+  opacity: 1;
+}
+
+.product-card {
+  display: inline-block;
+  width: 240px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  position: relative;
+  box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 30%);
 }
 
 /* OVERVIEW CSS */

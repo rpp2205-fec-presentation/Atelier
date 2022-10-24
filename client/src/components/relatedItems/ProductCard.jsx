@@ -18,7 +18,7 @@ class ProductCard extends React.Component {
       starRating: 0,
       isOnSale: false,
       salesPrice: 0,
-      imgUrl: ''
+      imgUrl: '../images/fullstar.jpeg'
     }
 
     this.updateProduct = this.updateProduct.bind(this);
@@ -61,26 +61,41 @@ class ProductCard extends React.Component {
       })
     })
     .then(result => {
+      var defaultIndex = 0;
       var haveFoundDefault = false;
       var styles = result.data.results;
 
-      for (var style of styles) {
-        if (style['default?']) {
-          originalPrice = style.original_price;
-
-          imgUrl = style.photos[0].url;
-          if (imgUrl === null) {
-            imgUrl = '../images/fullstar.jpeg';
-          }
-
-          if (style.sale_price !== null) {
-            isOnSale = true;
-            salesPrice = style.sale_price;
-            break;
-          }
+      // Determine if there's a default style
+      while (!haveFoundDefault && defaultIndex < styles.length) {
+        if (styles[defaultIndex]['default?']) {
+          haveFoundDefault = true;
+        } else {
+          defaultIndex++;
         }
       }
 
+      // If no default, choose first style
+      if (!haveFoundDefault) {
+        defaultIndex = 0;
+      }
+
+      // Save values of default style
+      var style = styles[defaultIndex];
+
+      originalPrice = style.original_price;
+
+      imgUrl = style.photos[0].url;
+
+      if (imgUrl === null) {
+        imgUrl = this.state.imgUrl;
+      }
+
+      if (style.sale_price !== null) {
+        isOnSale = true;
+        salesPrice = style.sale_price;
+      }
+
+      //Update state from default style
       this.setState({
         productCategory,
         productName,
@@ -103,8 +118,8 @@ class ProductCard extends React.Component {
       <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
         <FontAwesomeIcon icon={this.props.actionButtonIcon} />
       </button>
-      <div className='ri-image-block'>
-        <img className='ri-image' src={this.state.imgUrl} alt='product image'></img>
+      <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}>
+
       </div>
       <div className='ri-product-info'>
         <div className='ri-category'>{this.state.productCategory}</div>

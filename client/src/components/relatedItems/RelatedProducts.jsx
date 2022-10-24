@@ -1,7 +1,8 @@
 import React from 'react';
-import ProductCard from './ProductCard.jsx';
+import Carousel from './Carousel.jsx';
 import ComparisonModal from './ComparisonModal.jsx';
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 const axios = require('axios');
 
 class RelatedProducts extends React.Component {
@@ -15,6 +16,7 @@ class RelatedProducts extends React.Component {
 
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.handleActionButton = this.handleActionButton.bind(this);
+
   }
 
   getRelatedProducts(productId) {
@@ -48,9 +50,8 @@ class RelatedProducts extends React.Component {
     }
     return (
     <div id='related-products'>
-      <h3>Related Products</h3>
-      {this.state.relatedProducts.map((productId) =>
-        <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
+      <h3>RELATED PRODUCTS</h3>
+      <Carousel products={this.state.relatedProducts} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton} sliderComp='carousel-related-products'/>
       {modal}
     </div>)
   }
