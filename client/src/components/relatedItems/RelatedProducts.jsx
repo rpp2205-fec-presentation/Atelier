@@ -52,7 +52,7 @@ class RelatedProducts extends React.Component {
     }
     return (
     <div id='related-products'>
-      <h3>Related Products</h3>
+      <h3>RELATED PRODUCTS</h3>
       <Carousel products={this.state.relatedProducts} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton} sliderComp='carousel-related-products'/>
       {modal}
     </div>)

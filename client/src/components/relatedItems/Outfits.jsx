@@ -28,7 +28,7 @@ class Outfits extends React.Component {
 
   render() {
     return (<div id='outfits'>
-      <h3>Outfits</h3>
+      <h3>YOUR OUTFIT</h3>
       <Carousel products={this.state.outfits} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton} sliderComp='carousel-outfit'/>
     </div>)
   }

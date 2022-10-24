@@ -58,21 +58,12 @@
  /* RELATED ITEMS AND COMPARISON FORMATTING */
 
  #related-items-and-comparisons{
-  background-color: lightgrey;
-  padding: 10px;
-  margin: 5px;
- }
-
- #related-products, #outfits {
   background-color:  #2196F3;
-  margin: 10px;
-  padding: 10px;
- }
-
- #related-items-and-comparisons{
   position: relative;
-  padding: 10px;
-  margin: 5px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
  }
 
  .ri-action-button {
@@ -80,6 +71,13 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+  border-radius: 100%;
+  opacity: 0.75;
+  box-shadow: 1px 1px 1px 1px rgb(0 0 0 / 50%);
+ }
+
+ .ri-action-button:hover {
+  opacity: 1;
  }
 
  .ri-product-info {
