@@ -43,12 +43,14 @@ class RelatedProducts extends React.Component {
 
   slideLeft() {
     var scroller = document.getElementById('carousel-content');
-    scroller.scrollLeft = scroller.scrollLeft - 240;
+    scroller.scrollLeft = scroller.scrollLeft - 260;
+    console.log(scroller.scrollLeft);
   }
 
   slideRight() {
     var scroller = document.getElementById('carousel-content');
-    scroller.scrollLeft = scroller.scrollLeft + 240;
+    scroller.scrollLeft = scroller.scrollLeft + 260;
+    console.log(scroller.scrollLeft);
   }
 
   componentDidMount() {
