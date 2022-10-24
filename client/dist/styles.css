@@ -103,6 +103,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  cursor: pointer;
  }
 
  .ri-category, .ri-original-price {
@@ -172,6 +173,7 @@ td:nth-child(2) {
   white-space: nowrap;
   overflow-x: scroll;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 #carousel-content::-webkit-scrollbar {

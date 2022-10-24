@@ -16,6 +16,10 @@ class RelatedProducts extends React.Component {
 
     this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.handleActionButton = this.handleActionButton.bind(this);
+    this.slideLeft = this.slideLeft.bind(this);
+    this.slideRight = this.slideRight.bind(this);
+
+
   }
 
   getRelatedProducts(productId) {
@@ -37,6 +41,16 @@ class RelatedProducts extends React.Component {
     this.setState({showModal: newState, comparisonProductId: productId});
   }
 
+  slideLeft() {
+    var scroller = document.getElementById('carousel-content');
+    scroller.scrollLeft = scroller.scrollLeft - 240;
+  }
+
+  slideRight() {
+    var scroller = document.getElementById('carousel-content');
+    scroller.scrollLeft = scroller.scrollLeft + 240;
+  }
+
   componentDidMount() {
     this.getRelatedProducts(this.props.productId);
   }
@@ -51,12 +65,12 @@ class RelatedProducts extends React.Component {
     <div id='related-products'>
       <h3>Related Products</h3>
       <div id='carousel'>
-        <FontAwesomeIcon size='2x' icon={faChevronLeft} className='carousel-button left'/>
+        <FontAwesomeIcon size='2x' icon={faChevronLeft} className='carousel-button left' onClick={this.slideLeft}/>
         <div id='carousel-content'>
           {this.state.relatedProducts.map((productId) =>
             <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
         </div>
-        <FontAwesomeIcon size='2x' icon={faChevronRight} className='carousel-button right'/>
+        <FontAwesomeIcon size='2x' icon={faChevronRight} className='carousel-button right' onClick={this.slideRight}/>
       </div>
       {modal}
 
