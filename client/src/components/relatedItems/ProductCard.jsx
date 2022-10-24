@@ -115,12 +115,11 @@ class ProductCard extends React.Component {
 
   render() {
     return (<div className='product-card' onClick={() => {this.updateProduct()}}>
-      {this.props.productId}
       <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
         <FontAwesomeIcon icon={this.props.actionButtonIcon} />
       </button>
-      <div className='ri-image-block'>
-        <img className='ri-image' src={this.state.imgUrl} alt='product image'></img>
+      <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}>
+
       </div>
       <div className='ri-product-info'>
         <div className='ri-category'>{this.state.productCategory}</div>
