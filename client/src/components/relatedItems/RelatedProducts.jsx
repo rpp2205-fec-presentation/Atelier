@@ -49,9 +49,15 @@ class RelatedProducts extends React.Component {
     return (
     <div id='related-products'>
       <h3>Related Products</h3>
+      <div id='carousel'>
+        <div className='carousel-button left'></div>
+        <div id='carousel-content'></div>
+        <div className='carousel-button right'></div>
+      </div>
       {this.state.relatedProducts.map((productId) =>
         <ProductCard key={productId.toString()} productId={productId} setNewProductId={this.props.setNewProductId} actionButtonIcon={faStar} actionClick={this.handleActionButton}/>)}
       {modal}
+
     </div>)
   }
 }

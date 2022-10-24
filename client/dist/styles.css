@@ -160,14 +160,18 @@
 td:nth-child(1), td:nth-child(3) {
   width: 150px;
   font-size: 10px;
-
 }
 
 td:nth-child(2) {
   width: 150px;
   font-weight: bold;
   font-size: 10px;
+}
 
+#carousel {
+  width: 90%;
+  height: 300px;
+  background-color: #fff;
 }
 
 /* OVERVIEW CSS */
