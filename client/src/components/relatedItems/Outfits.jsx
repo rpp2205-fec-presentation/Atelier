@@ -8,22 +8,34 @@ class Outfits extends React.Component {
     super(props);
     this.state = {
       productId: 71697,
-      outfits: [71697, 71698, 71699, 71704, 71703]
+      outfits: ['newOutfit', 71697, 71698, 71699, 71704, 71703]
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
   }
 
   handleActionButton(productId) {
-    var tempOutfits = [];
+    if (productId === 'newOutfit') {
+      this.handleNewOutfit();
+    } else {
+      var tempOutfits = [];
 
-    for (var outfit of this.state.outfits) {
-      if (outfit !== productId) {
-        tempOutfits.push(outfit);
+      for (var outfit of this.state.outfits) {
+        if (outfit !== productId) {
+          tempOutfits.push(outfit);
+        }
       }
-    }
 
-    this.setState({outfits: tempOutfits});
+      this.setState({outfits: tempOutfits});
+    }
+  }
+
+  handleNewOutfit() {
+    if (!this.state.outfits.includes(this.state.productId)) {
+      var tempOutfits = [this.state.productId];
+      tempOutfits.concat(this.state.outfits);
+      this.setState({outfits: tempOutfits});
+    }
   }
 
   render() {
