@@ -114,8 +114,6 @@ class ProductCard extends React.Component {
     })
   }
 
-
-
   render() {
     var price = null;
     if (!this.state.isOnSale) {
@@ -129,6 +127,8 @@ class ProductCard extends React.Component {
     if (this.props.productId === 'newOutfit') {
       var productDiv = <div className='product-card' onClick={(e) => {this.takeAction(e)}}>
         New Outfit +
+        <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}></div>
+        <div className='ri-product-info'></div>
       </div>
     } else {
       var productDiv = <div className='product-card' onClick={() => {this.updateProduct()}}>

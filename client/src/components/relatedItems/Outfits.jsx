@@ -7,7 +7,6 @@ class Outfits extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productId: 71697,
       outfits: ['newOutfit', 71697, 71698, 71699, 71704, 71703]
     }
 
@@ -31,9 +30,10 @@ class Outfits extends React.Component {
   }
 
   handleNewOutfit() {
-    if (!this.state.outfits.includes(this.state.productId)) {
-      var tempOutfits = [this.state.productId];
-      tempOutfits.concat(this.state.outfits);
+
+    if (!this.state.outfits.includes(this.props.productId)) {
+      var tempOutfits = this.state.outfits.slice();
+      tempOutfits.splice(1, 0, this.props.productId);
       this.setState({outfits: tempOutfits});
     }
   }
@@ -41,7 +41,7 @@ class Outfits extends React.Component {
   render() {
     return (<div id='outfits'>
       <h3>YOUR OUTFIT</h3>
-      <Carousel products={this.state.outfits} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton} sliderComp='carousel-outfit'/>
+      <Carousel key='outfit-carousel' products={this.state.outfits} setNewProductId={this.props.setNewProductId} actionButtonIcon={faX} actionClick={this.handleActionButton} sliderComp='carousel-outfit'/>
     </div>)
   }
 }

@@ -12,7 +12,7 @@ class RelatedItems extends React.Component {
   render() {
     return (<div id='related-items-and-comparisons' onClick={e => this.props.clickTracking(e, 'Related Items')}>
       <RelatedProducts productId={this.props.productId} setNewProductId={this.props.setNewProductId}/>
-      <Outfits setNewProductId={this.props.setNewProductId}/>
+      <Outfits productId={this.props.productId} setNewProductId={this.props.setNewProductId}/>
     </div>)
   }
 }
