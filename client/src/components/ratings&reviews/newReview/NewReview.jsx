@@ -97,7 +97,7 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
     <Overlay>
       <ModalForm>
         {missingReq && <Missing>* Areas are required</Missing>}
-        <Close onClick={openModal}>X</Close>
+        <Close onClick={openModal}>Close X</Close>
         <form onSubmit={checkForm}>
           <h2>Write Your Review</h2>
           <h4>Overall Rating</h4>
@@ -201,7 +201,7 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
               onChange={emailText}
             />
           </label>
-          <Remain>For authentication reasons you will not be emailed</Remain>
+          <Remain>For authentication reasons, you will not be emailed</Remain>
           <br />
 
           <Submit type="submit" value="Post Review" />
