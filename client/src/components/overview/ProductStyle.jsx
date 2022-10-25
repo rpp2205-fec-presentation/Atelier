@@ -1,7 +1,7 @@
 import React from "react";
-import { BiCheckCircle } from 'react-icons/bi';
 import getStyleInfoById from "../helpers/getStyleInfoById.js";
 import SelectedProduct from "./SelectedProduct.jsx";
+import { BiCheckCircle } from 'react-icons/bi';
 
 class ProductStyle extends React.Component {
   constructor(props) {
@@ -59,16 +59,34 @@ class ProductStyle extends React.Component {
         {<SelectedProduct selectedStyle={selectedStyle} />}
         <div>
           <h3 id="po-all-style">Style > {selectedStyle.name}</h3>
-          {images.map((img, idx) => (
-            <img
-              key={idx}
-              name={idx}
-              className="po-each-style-photo clickable"
-              onClick={this.stlyeClickhandler}
-              src={img}
-              alt="po-each-style-photo" />
-          ))}
-          <BiCheckCircle id="tick" />
+          {images.map((img, idx) => {
+            if (img === selectedStyle.photos[0].thumbnail_url) {
+              return (
+                <div id="po-all-style-photo">
+                  <img
+                    key={idx}
+                    name={idx}
+                    className="po-each-style-photo clickable"
+                    onClick={this.stlyeClickhandler}
+                    src={img}
+                    alt="po-each-style-photo" />
+                  <BiCheckCircle id="tick" />
+                </div>
+              )
+            } else {
+              return (
+                <div id="po-all-style-photo" >
+                  <img
+                    key={idx}
+                    name={idx}
+                    className="po-each-style-photo clickable"
+                    onClick={this.stlyeClickhandler}
+                    src={img}
+                    alt="po-each-style-photo" />
+                </div>
+              )
+            }
+          })}
         </div>
       </div>
     )

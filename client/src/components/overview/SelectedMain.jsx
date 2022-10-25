@@ -14,8 +14,13 @@ class SelectedMain extends React.Component {
     this.leftClickHandler = this.leftClickHandler.bind(this);
     this.rightClickHandler = this.rightClickHandler.bind(this);
     this.thumbnailClickHandler = this.thumbnailClickHandler.bind(this);
+    this.zoomHandler = this.zoomHandler.bind(this);
   }
 
+  zoomHandler() {
+    const { zoom } = this.state;
+    this.setState({ zoom: !zoom });
+  }
 
   leftClickHandler() {
     const { selectedImages } = this.props;
@@ -42,13 +47,26 @@ class SelectedMain extends React.Component {
     const { mainIdx, zoom } = this.state;
     const { selectedImages } = this.props;
     let selectedProductImg;
-    selectedProductImg = (
-      <img
-        id="po-large-img"
-        src={selectedImages[mainIdx].url}
-        alt="po-large-img"
-      />
-    );
+    if (!zoom) {
+      selectedProductImg = (
+        <img
+          id="po-large-img"
+          src={selectedImages[mainIdx].url}
+          onClick={this.zoomHandler}
+          alt="po-large-img"
+        />
+      );
+    } else {
+      selectedProductImg = (
+        <img
+          id="po-large-img"
+          className="po-large-img-expanded"
+          src={selectedImages[mainIdx].url}
+          onClick={this.zoomHandler}
+          alt="po-large-img"
+        />
+      );
+    }
 
     return (
       <div className="po-main">
