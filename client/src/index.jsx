@@ -16,5 +16,4 @@ const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 root.render(<Atelier />);
 
-// reactDom.render(<Atelier />, document.getElementById('root'));
 
