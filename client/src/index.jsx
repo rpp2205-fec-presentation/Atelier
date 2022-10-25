@@ -1,5 +1,5 @@
 import React from 'react';
-import reactDom from 'react-dom';
+import { createRoot } from'react-dom/client';
 import App from './components/App.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 
@@ -12,4 +12,8 @@ const Atelier = () => {
   );
 };
 
-reactDom.render(<Atelier />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+root.render(<Atelier />);
+
+

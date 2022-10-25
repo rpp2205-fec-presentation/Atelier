@@ -17,6 +17,11 @@ module.exports = {
           loader: "babel-loader",
         },
       },
+      {
+        test: /\.(js|jsx)$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
     ],
   },
 };
