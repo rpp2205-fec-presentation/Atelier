@@ -49,6 +49,6 @@ const Empty = styled.img`
 width: 50px;
 height: 50px;
 margin-right: 10px;
-border: 2px dashed black;
+border: solid;
 cursor: pointer;
 `;

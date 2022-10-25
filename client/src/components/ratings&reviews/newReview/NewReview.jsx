@@ -99,7 +99,8 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
         {missingReq && <Missing>* Areas are required</Missing>}
         <Close onClick={openModal}>X</Close>
         <form onSubmit={checkForm}>
-          <h3>Write Your Review</h3>
+          <h2>Write Your Review</h2>
+          <h4>Overall Rating</h4>
           <Ratings
             rating={rating}
             hover={hover}
@@ -109,7 +110,7 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
           />
 
           <label>
-            Recommend:
+            Do you recommend this product?
             {' '}
             <label>
               <input
@@ -178,7 +179,7 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
           <ImageUpload photos={photos} upload={setPhotos} />
 
           <label>
-            Set Nickname:
+            What is your nickname?
             <Input
               type="text"
               placeholder="Example: jackson11!"
@@ -188,10 +189,9 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
               onChange={nicknameText}
             />
           </label>
-          <Remain>For authentication reasons you will not be emailed</Remain>
-
+          <br/>
           <label>
-            Set Email:
+            Your email:
             <Input
               type="email"
               placeholder="jackson11@email.com"
@@ -201,6 +201,7 @@ const NewReview = ({ productId, metaData, openModal, sorted, setReviews }) => {
               onChange={emailText}
             />
           </label>
+          <Remain>For authentication reasons you will not be emailed</Remain>
           <br />
 
           <Submit type="submit" value="Post Review" />
