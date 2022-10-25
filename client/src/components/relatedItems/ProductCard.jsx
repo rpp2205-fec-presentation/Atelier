@@ -114,17 +114,23 @@ class ProductCard extends React.Component {
 
 
   render() {
+    var price = null;
+    if (!this.state.isOnSale) {
+      price = <div className='ri-original-price'>${this.state.originalPrice}</div>
+    } else {
+      price = (<div>
+        <b className='ri-discount-price'>{this.state.salesPrice}</b><s className='ri-old-price'>${this.state.originalPrice}</s>
+      </div>)
+    }
     return (<div className='product-card' onClick={() => {this.updateProduct()}}>
       <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
         <FontAwesomeIcon icon={this.props.actionButtonIcon} />
       </button>
-      <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}>
-
-      </div>
+      <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}></div>
       <div className='ri-product-info'>
         <div className='ri-category'>{this.state.productCategory}</div>
         <div className='ri-product-name'>{this.state.productName}</div>
-        <div className='ri-original-price'>${this.state.originalPrice}</div>
+        {price}
         <div>{stars(this.state.starRating)}</div>
       </div>
     </div>)

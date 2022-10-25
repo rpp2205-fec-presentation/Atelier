@@ -97,10 +97,26 @@
   cursor: pointer;
  }
 
- .ri-category, .ri-original-price {
+ .ri-category {
   font-family: 'Courier New', Courier, monospace;
   font-size: 10px;
   text-transform: uppercase;
+}
+
+ .ri-original-price, .ri-discount-price, .ri-old-price {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  text-transform: uppercase;
+ }
+
+ .ri-discount-price {
+  color: red;
+ }
+
+ .ri-old-price {
+  color: gray;
+  font-size: 12px;
+  margin-left: 5px;
  }
 
  .ri-product-name {
