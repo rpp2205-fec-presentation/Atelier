@@ -1,110 +1,22 @@
 import {render, screen} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import ProductCard from '../../client/src/components/relatedItems/ProductCard.jsx';
 import React from 'react';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX, faStar } from '@fortawesome/free-solid-svg-icons';
+import mockData from './riMockData.js'
 
 const server = setupServer(
-  // capture "GET /greeting" requests
-  rest.get('/products/:product_Id', (req, res, ctx) => {
-    // respond using a mocked JSON body
-    return res(ctx.json({
-      "id": 11,
-      "name": "Air Minis 250",
-      "slogan": "Full court support",
-      "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
-      "category": "Basketball Shoes",
-      "default_price": "0",
-      "features": [
-      {
-              "feature": "Sole",
-              "value": "Rubber"
-          },
-      {
-              "feature": "Material",
-              "value": "FullControlSkin"
-          },
-      ],
-  }))
+  rest.get('/products/:product_id', (req, res, ctx) => {
+    return res(ctx.json(mockData.productData))
   }),
   rest.get('/reviews/meta', (req, res, ctx) => {
-    // respond using a mocked JSON body
-    return res(ctx.json({  "product_id": "2",
-    "ratings": {
-      1: 3,
-      2: 1,
-      3: 1,
-      4: 2,
-      5: 3
-    }}))
+    return res(ctx.json(mockData.ratingData))
   }),
   rest.get('/products/:product_id/styles', (req, res, ctx) => {
-    // respond using a mocked JSON body
-    return res(ctx.json({
-      "product_id": "1",
-      "results": [
-      {
-              "style_id": 1,
-              "name": "Forest Green & Black",
-              "original_price": "140",
-              "sale_price": "0",
-              "default?": true,
-              "photos": [
-          {
-                      "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-                      "url": "urlplaceholder/style_1_photo_number.jpg"
-                  },
-          {
-                      "thumbnail_url": "urlplaceholder/style_1_photo_number_thumbnail.jpg",
-                      "url": "urlplaceholder/style_1_photo_number.jpg"
-                  }
-              ],
-          "skus": {
-                    "37": {
-                          "quantity": 8,
-                          "size": "XS"
-                    },
-                    "38": {
-                          "quantity": 16,
-                          "size": "S"
-                    },
-                    "39": {
-                          "quantity": 17,
-                          "size": "M"
-                    },
-                }
-      },
-    {
-          "style_id": 2,
-          "name": "Desert Brown & Tan",
-          "original_price": "140",
-          "sale_price": "0",
-          "default?": false,
-          "photos": [
-          {
-                      "thumbnail_url": "urlplaceholder/style_2_photo_number_thumbnail.jpg",
-                      "url": "urlplaceholder/style_2_photo_number.jpg"
-          }
-              ],
-          "skus": {
-                    "37": {
-                          "quantity": 8,
-                          "size": "XS"
-                    },
-                    "38": {
-                          "quantity": 16,
-                          "size": "S"
-                    },
-                    "39": {
-                          "quantity": 17,
-                          "size": "M"
-                    },
-                }
-      }
-  ]
-  }))
+    return res(ctx.json(mockData.styleData))
   })
 )
 
@@ -116,11 +28,18 @@ afterEach(() => server.resetHandlers())
 // clean up once the tests are done
 afterAll(() => server.close())
 
-test('finds image div', async() => {
-  render(<ProductCard key="71697" productId={71697}/> )
+test('should have visible action button', async() => {
+  render(<ProductCard key="71697" productId={71697} actionButtonIcon={faX}/> )
 
-  await screen.findByAltText('product image');
+  var actionButtons = document.getElementsByClassName('ri-action-button');
 
-  expect(screen.getByAltText('product image')).toBeVisible();
+  expect(actionButtons[0]).toBeVisible();
+})
 
+test('should get the default product image', async() => {
+  render(<ProductCard key="71697" productId={71697} actionButtonIcon={faX}/> )
+
+  var imageBlocks = document.getElementsByClassName('ri-image-block');
+
+  expect(imageBlocks[0].style._values['background-image']).toBe('url(../images/fullstar.jpeg)');
 })

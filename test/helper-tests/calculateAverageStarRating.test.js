@@ -1,22 +1,12 @@
 import calculateAverageRating from '../../client/src/components/helpers/calculateAverageRating.js';
 import {rest} from 'msw';
 import {setupServer} from 'msw/node';
+import mockData from '../related-items-tests/riMockData.js'
 
 const server = setupServer(
   rest.get('/reviews/meta', (req, res, ctx) => {
     // respond using a mocked JSON body
-    return res(ctx.json(
-      {
-        "product_id": "2",
-        "ratings": {
-          1: 0,
-          2: 1,
-          3: 1,
-          4: 2,
-          5: 3
-        }
-      }
-    ))
+    return res(ctx.json(mockData.ratingData))
   }),
 );
 
@@ -35,7 +25,7 @@ describe("Calculate Average Star Rating", () => {
     then(result => {
       average = result;
 
-      expect(average).toBe(4);
+      expect(average).toBe(3.1);
     });
   });
 });
