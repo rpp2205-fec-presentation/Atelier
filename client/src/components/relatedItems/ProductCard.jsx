@@ -115,7 +115,7 @@ class ProductCard extends React.Component {
 
   render() {
     var price = null;
-    if (this.state.isOnSale) {
+    if (!this.state.isOnSale) {
       price = <div className='ri-original-price'>${this.state.originalPrice}</div>
     } else {
       price = (<div>

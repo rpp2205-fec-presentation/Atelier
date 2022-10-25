@@ -115,6 +115,8 @@
 
  .ri-old-price {
   color: gray;
+  font-size: 12px;
+  margin-left: 5px;
  }
 
  .ri-product-name {
