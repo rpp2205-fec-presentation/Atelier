@@ -50,7 +50,7 @@ const ReviewsList = ({
         {' '}
         <ListButton onClick={openModal}>Add A Review +</ListButton>
       </div>
-      {modalOpen && <NewReview productId={productId} metaData={metaData} openModal={openModal} sorted={sorted} />}
+      {modalOpen && <NewReview productId={productId} metaData={metaData} openModal={openModal} sorted={sorted} setReviews={setReviews} />}
     </div>
   )
 }
