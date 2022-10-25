@@ -1,5 +1,4 @@
 import {render, screen} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import ProductCard from '../../client/src/components/relatedItems/ProductCard.jsx';
 import React from 'react';
@@ -17,7 +16,6 @@ const server = setupServer(
     return res(ctx.json(mockData.ratingData))
   }),
   rest.get('/products/:product_id/styles', (req, res, ctx) => {
-    //console.log(mockData.styleData);
     return res(ctx.json(mockData.styleData))
   })
 )

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage ",
-    "test:ri": "jest --testPathPattern=./test/related-items-tests",
+    "test:ri": "jest --silent --testPathPattern=./test/related-items-tests",
     "test:helper": "jest --testPathPattern=./test/helper-tests",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/index.js"
