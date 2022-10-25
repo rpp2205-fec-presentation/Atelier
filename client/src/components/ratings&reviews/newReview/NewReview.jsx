@@ -6,7 +6,7 @@ import { Overlay, ModalForm, Missing, Close, Remain, Input, Submit } from './New
 import { reviewsCall } from '../../helpers/reviewsHelpers.js';
 import axios from 'axios';
 
-const NewReview = ({ productId, metaData, openModal, closeModal }) => {
+const NewReview = ({ productId, metaData, openModal, sorted }) => {
   const [missingReq, setMissingReq] = useState(false);
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(null);
@@ -58,9 +58,13 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
 
   const post = (data) => {
     axios.post("/reviews", data)
-    .then(() => {
-      reviewsCall();
-    });
+    .then((res) => {
+      alert("Review Submitted!");
+      openModal();
+      reviewsCall(productId, sorted)
+        .then(res => {setReviews(res.data.results)})
+    })
+    .catch(err => console.log(err));
   };
 
   const postData = () => {
@@ -94,7 +98,7 @@ const NewReview = ({ productId, metaData, openModal, closeModal }) => {
     <Overlay>
       <ModalForm>
         {missingReq && <Missing>* Areas are required</Missing>}
-        <Close onClick={closeModal}>X</Close>
+        <Close onClick={openModal}>X</Close>
         <form onSubmit={checkForm}>
           <h3>Write Your Review</h3>
           <Ratings
