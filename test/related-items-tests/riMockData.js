@@ -91,3 +91,5 @@ module.exports.styleData =
     }
   ]
 }
+
+module.exports.relatedData = [71697, 71698, 71699];

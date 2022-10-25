@@ -10,17 +10,14 @@ import { faX, faStar } from '@fortawesome/free-solid-svg-icons';
 import mockData from './riMockData.js'
 
 const server = setupServer(
-  // capture "GET /greeting" requests
-  rest.get('/products/:product_Id', (req, res, ctx) => {
-    // respond using a mocked JSON body
+  rest.get('/products/:product_id', (req, res, ctx) => {
     return res(ctx.json(mockData.productData))
   }),
   rest.get('/reviews/meta', (req, res, ctx) => {
-    // respond using a mocked JSON body
     return res(ctx.json(mockData.ratingData))
   }),
   rest.get('/products/:product_id/styles', (req, res, ctx) => {
-    // respond using a mocked JSON body
+    //console.log(mockData.styleData);
     return res(ctx.json(mockData.styleData))
   })
 )
@@ -33,11 +30,18 @@ afterEach(() => server.resetHandlers())
 // clean up once the tests are done
 afterAll(() => server.close())
 
-test('finds image div', async() => {
+test('should have visible action button', async() => {
   render(<ProductCard key="71697" productId={71697} actionButtonIcon={faX}/> )
 
-  await screen.findByAltText('product image');
+  var actionButtons = document.getElementsByClassName('ri-action-button');
 
-  expect(screen.getByAltText('product image')).toBeVisible();
+  expect(actionButtons[0]).toBeVisible();
+})
 
+test('should get the default product image', async() => {
+  render(<ProductCard key="71697" productId={71697} actionButtonIcon={faX}/> )
+
+  var imageBlocks = document.getElementsByClassName('ri-image-block');
+
+  expect(imageBlocks[0].style._values['background-image']).toBe('url(../images/fullstar.jpeg)');
 })
