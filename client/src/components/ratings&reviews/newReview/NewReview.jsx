@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Ratings from './Ratings.jsx'
 import CharRatings from './CharRatings.jsx';
-import ImageUpload from "./ImageUpload.jsx";
+import ImageUpload from './ImageUpload.jsx';
 import { Overlay, ModalForm, Missing, Close, Remain, Input, Submit } from './NewReviewStyles.jsx'
 import { reviewsCall } from '../../helpers/reviewsHelpers.js';
 import axios from 'axios';
