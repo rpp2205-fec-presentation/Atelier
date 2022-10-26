@@ -7,10 +7,11 @@ class Outfits extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      outfits: ['newOutfit', 71697, 71698, 71699, 71704, 71703]
+      outfits: ['newOutfit'].concat(localStorage.getItem('myOutfits').split(","))
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
+    this.updateLocalOutfitStorage = this.updateLocalOutfitStorage.bind(this);
   }
 
   handleActionButton(productId) {
@@ -26,7 +27,16 @@ class Outfits extends React.Component {
       }
 
       this.setState({outfits: tempOutfits});
+      this.updateLocalOutfitStorage(tempOutfits);
     }
+
+  }
+
+  updateLocalOutfitStorage(outfits) {
+    var localStorageOutfits = outfits.slice();
+    //Remove the "newOutfit" field
+    localStorageOutfits.shift();
+    localStorage.setItem('myOutfits', localStorageOutfits);
   }
 
   handleNewOutfit() {
@@ -35,7 +45,13 @@ class Outfits extends React.Component {
       var tempOutfits = this.state.outfits.slice();
       tempOutfits.splice(1, 0, this.props.productId);
       this.setState({outfits: tempOutfits});
+      this.updateLocalOutfitStorage(tempOutfits);
     }
+  }
+
+  componentDidMount() {
+    console.log(this.state.outfits);
+    console.log()
   }
 
   render() {
