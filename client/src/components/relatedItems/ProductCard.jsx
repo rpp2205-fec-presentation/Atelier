@@ -18,7 +18,7 @@ class ProductCard extends React.Component {
       starRating: 0,
       isOnSale: false,
       salesPrice: 0,
-      imgUrl: '../images/fullstar.jpeg'
+      imgUrl: '../images/imageNotFound.jpg'
     }
 
     this.updateProduct = this.updateProduct.bind(this);
