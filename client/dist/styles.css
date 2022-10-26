@@ -131,7 +131,6 @@
  }
 
  #comparison-modal {
-  background-color: plum;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -139,37 +138,45 @@
   width: 500px;
   height: 250px;
   overflow: auto;
-  box-shadow: 10px 10px rgba(0, 0, 0, 0.25);
   z-index: 2;
+  border-radius: 10px;
+
  }
 
  .ri-comparison-table {
-  border-collapse: collapse;
+  background-color: lightgray;
   width: 100%;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 40%);
  }
 
  th, thead {
-  background-color: plum;
+  background-color: lightgray;
   top: 0;
   position: sticky;
   z-index: 1;
+  font-size: 18px;
 }
 
  td, th {
   text-align: center;
-  padding: 8px 8px;
+  padding: 4px 8px;
   word-wrap: break-word;
+
 }
 
 td:nth-child(1), td:nth-child(3) {
   width: 150px;
-  font-size: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 td:nth-child(2) {
   width: 150px;
-  font-weight: bold;
-  font-size: 10px;
+  font-size: 14px;
+  border-left-style: dashed;
+  border-right-style: dashed;
+  border-width: 1px
 }
 
 .carousel {
