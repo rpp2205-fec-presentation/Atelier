@@ -18,7 +18,7 @@ class ProductCard extends React.Component {
       starRating: 0,
       isOnSale: false,
       salesPrice: 0,
-      imgUrl: '../images/fullstar.jpeg'
+      imgUrl: '../images/imageNotFound.jpg'
     }
 
     this.updateProduct = this.updateProduct.bind(this);
@@ -35,6 +35,9 @@ class ProductCard extends React.Component {
   }
 
   componentDidMount() {
+
+    if (this.props.productId === 'newOutfit') { return; }
+
     var productCategory, productName, originalPrice, isOnSale, imgUrl;
     var salesPrice = 0;
     var starRating = 0;
@@ -111,8 +114,6 @@ class ProductCard extends React.Component {
     })
   }
 
-
-
   render() {
     var price = null;
     if (!this.state.isOnSale) {
@@ -122,18 +123,29 @@ class ProductCard extends React.Component {
         <b className='ri-discount-price'>{this.state.salesPrice}</b><s className='ri-old-price'>${this.state.originalPrice}</s>
       </div>)
     }
-    return (<div className='product-card' onClick={() => {this.updateProduct()}}>
-      <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
-        <FontAwesomeIcon icon={this.props.actionButtonIcon} />
-      </button>
-      <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}></div>
-      <div className='ri-product-info'>
-        <div className='ri-category'>{this.state.productCategory}</div>
-        <div className='ri-product-name'>{this.state.productName}</div>
-        {price}
-        <div>{stars(this.state.starRating)}</div>
+
+    if (this.props.productId === 'newOutfit') {
+      var productDiv = <div className='product-card' onClick={(e) => {this.takeAction(e)}} style={{backgroundImage:`url(../images/newOutfitButton.jpg)`, backgroundSize:'cover'}}></div>
+    } else {
+      var productDiv = <div className='product-card' onClick={() => {this.updateProduct()}}>
+        <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
+          <FontAwesomeIcon icon={this.props.actionButtonIcon} />
+        </button>
+        <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}></div>
+        <div className='ri-product-info'>
+          <div className='ri-category'>{this.state.productCategory}</div>
+          <div className='ri-product-name'>{this.state.productName}</div>
+          {price}
+          <div>{stars(this.state.starRating)}</div>
+        </div>
       </div>
-    </div>)
+    }
+
+    return (<React.Fragment>
+      {productDiv}
+    </React.Fragment>
+
+    )
   }
 }
 
