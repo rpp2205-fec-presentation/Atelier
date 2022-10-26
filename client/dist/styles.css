@@ -98,6 +98,9 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   cursor: pointer;
+  border-bottom-style: solid;
+  border-color: black;
+  border-width: 1px;
  }
 
  .ri-category {
@@ -171,7 +174,7 @@ td:nth-child(2) {
 
 .carousel {
   width: 100%;
-  height: 305px;
+  height: 310px;
   margin-top: 15px;
   position: relative;
   display: flex;
@@ -223,8 +226,9 @@ td:nth-child(2) {
   margin-right: 5px;
   text-align: center;
   position: relative;
-  box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 30%);
-  border: black;
+  box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 40%);
+  border-style: solid;
+  border-color: lightgray;
 }
 
 /* OVERVIEW CSS */
