@@ -4,6 +4,7 @@ import Overview from './overview/Overview.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
+import Header from './Header.jsx';
 import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
   const [sorted, setSorted] = useState('newest');
   const [outfits, setOutfits] = useState([]);
+  const [mode, setMode] = useState('light');
 
   const getData = (id = 71697) => {
 
@@ -95,9 +97,17 @@ const App = () => {
       .catch(err => console.log(err))
   }
 
+  const toggleMode = () => {
+    const changeMode = mode === "light" ? "dark" : "light";
+    setMode(changeMode);
+  };
+
   if (pageLoading) { return 'Page is Loading'}
 
-    return (<div>
+    return (<div color-mode={mode}>
+      <ErrorBoundary>
+        <Header toggleMode={toggleMode}/>
+      </ErrorBoundary>
       <ErrorBoundary>
         <Overview productId={product_id} clickTracking={clickTracking} />
       </ErrorBoundary>
