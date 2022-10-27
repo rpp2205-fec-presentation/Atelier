@@ -55,6 +55,16 @@
    margin: auto;
  } */
 
+ [color-mode="light"] {
+  color: #000000;
+  background-color: #f5f5f5;
+}
+
+[color-mode="dark"] {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
  /* RELATED ITEMS AND COMPARISON FORMATTING */
 
  #related-items-and-comparisons{
