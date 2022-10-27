@@ -7,7 +7,7 @@ class Outfits extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      outfits: ['newOutfit'].concat(localStorage.getItem('myOutfits').split(","))
+      outfits: ['newOutfit']
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
@@ -50,8 +50,12 @@ class Outfits extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state.outfits);
-    console.log()
+    if (localStorage.getItem('myOutfits') === null) {
+      localStorage.setItem('myOutfits', '');
+    } else {
+      var tempOutfits = ['newOutfit'].concat(localStorage.getItem('myOutfits').split(","))
+      this.setState({outfits: tempOutfits});
+    }
   }
 
   render() {
