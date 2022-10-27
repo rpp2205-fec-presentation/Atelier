@@ -4,6 +4,7 @@ import Overview from './overview/Overview.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import RatingsReviews from './ratings&reviews/RatingsReviews.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
+import Header from './Header.jsx';
 import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 
 const App = () => {
@@ -71,6 +72,9 @@ const App = () => {
   if (pageLoading) { return 'Page is Loading'}
 
     return (<div>
+      <ErrorBoundary>
+        <Header />
+      </ErrorBoundary>
       <ErrorBoundary>
         <Overview productId={product_id} clickTracking={clickTracking} />
       </ErrorBoundary>
