@@ -7,53 +7,31 @@ class Outfits extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      outfits: ['newOutfit']
+      outfits: ['newOutfit'].concat(this.props.outfits)
     }
 
     this.handleActionButton = this.handleActionButton.bind(this);
-    this.updateLocalOutfitStorage = this.updateLocalOutfitStorage.bind(this);
   }
 
   handleActionButton(productId) {
     if (productId === 'newOutfit') {
-      this.handleNewOutfit();
+      this.props.addNewOutfit(this.props.productId);
     } else {
-      var tempOutfits = [];
-
-      for (var outfit of this.state.outfits) {
-        if (outfit !== productId) {
-          tempOutfits.push(outfit);
-        }
-      }
-
-      this.setState({outfits: tempOutfits});
-      this.updateLocalOutfitStorage(tempOutfits);
-    }
-
-  }
-
-  updateLocalOutfitStorage(outfits) {
-    var localStorageOutfits = outfits.slice();
-    //Remove the "newOutfit" field
-    localStorageOutfits.shift();
-    localStorage.setItem('myOutfits', localStorageOutfits);
-  }
-
-  handleNewOutfit() {
-
-    if (!this.state.outfits.includes(this.props.productId)) {
-      var tempOutfits = this.state.outfits.slice();
-      tempOutfits.splice(1, 0, this.props.productId);
-      this.setState({outfits: tempOutfits});
-      this.updateLocalOutfitStorage(tempOutfits);
+      this.props.removeOutfit(productId);
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.outfits !== prevProps.outfits) {
+      var tempOutfits = ['newOutfit'].concat(this.props.outfits);
+      this.setState({outfits: tempOutfits});
+    }
+  }
   componentDidMount() {
     if (localStorage.getItem('myOutfits') === null) {
       localStorage.setItem('myOutfits', '');
     } else {
-      var tempOutfits = ['newOutfit'].concat(localStorage.getItem('myOutfits').split(","))
+      var tempOutfits = ['newOutfit'].concat(this.props.outfits);
       this.setState({outfits: tempOutfits});
     }
   }

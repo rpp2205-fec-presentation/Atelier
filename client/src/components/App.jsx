@@ -15,10 +15,10 @@ const App = () => {
   const [filter, setFilter] = useState(0);
   const [ratings, setRatings] = useState({1:0, 2:0, 3:0, 4:0, 5:0});
   const [sorted, setSorted] = useState('newest');
-
-
+  const [outfits, setOutfits] = useState([]);
 
   const getData = (id = 71697) => {
+
     const fetchReviews = reviewsCall(id, sorted)
       .then(reviews => {setReviews(reviews.data.results)});
     const fetchMeta = axios.get('/reviews/meta', {params: {product_id: id}})
@@ -30,10 +30,37 @@ const App = () => {
       Promise.all([fetchReviews, fetchMeta])
       .then(() => {setPageLoading(false)})
       .catch(err => console.log(err));
+
+      if (localStorage.getItem('myOutfits') === null) {
+        localStorage.setItem('myOutfits', '');
+      } else if (localStorage.getItem('myOutfits') !== '') {
+        setOutfits(localStorage.getItem('myOutfits').split(","));
+      }
   }
 
   const setNewProductId = (newProductId) => {
     setId(newProductId);
+  }
+
+  const addNewOutfit = (productId) => {
+    if (!outfits.includes(productId)) {
+      var tempOutfits = [productId].concat(outfits);
+      localStorage.setItem('myOutfits', tempOutfits);
+      setOutfits(tempOutfits);
+    }
+  }
+
+  const removeOutfit = (productId) => {
+    var tempOutfits = [];
+
+    for (var outfit of outfits) {
+      if (outfit !== productId) {
+        tempOutfits.push(outfit);
+      }
+    }
+
+    localStorage.setItem('myOutfits', tempOutfits);
+    setOutfits(tempOutfits);
   }
 
   useEffect(() => {
@@ -79,7 +106,14 @@ const App = () => {
         <Overview productId={product_id} clickTracking={clickTracking} />
       </ErrorBoundary>
       <ErrorBoundary>
-        <RelatedItems key={`ri_${product_id}`} productId={product_id} setNewProductId={setNewProductId} clickTracking={clickTracking} />
+        <RelatedItems
+          key={`ri_${product_id}`}
+          productId={product_id}
+          setNewProductId={setNewProductId}
+          clickTracking={clickTracking}
+          addNewOutfit={addNewOutfit}
+          removeOutfit={removeOutfit}
+          outfits={outfits}/>
       </ErrorBoundary>
       <ErrorBoundary>
         <RatingsReviews
