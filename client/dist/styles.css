@@ -253,16 +253,8 @@ td:nth-child(2) {
 /* OVERVIEW CSS */
 
 .po-container {
-  /* display: grid;
-  grid-template-columns: repeat(3, 33.333%);
-  grid-template-rows: repeat(4, 25%); */
-  background-color: #2196F3;
   padding: 10px;
 }
-
-/* .po-product-info {
-  display: grid;
-} */
 
 .po-product-info > section {
   margin-left: 10px;
@@ -271,7 +263,7 @@ td:nth-child(2) {
 }
 
 .po-main {
-  background-color: rgba(255, 255, 255, 0.8);
+  /* background-color: rgba(255, 255, 255, 0.8); */
   border: 1px solid rgba(0, 0, 0, 0.8);
   text-align: center;
 }
@@ -402,3 +394,49 @@ td:nth-child(2) {
   color: #69c1e0;
   border-radius: 50%;
 }
+
+.po-product-cart {
+  width: 300px;
+  padding-block: 0.3rem 0.3rem;
+  text-align: center;
+}
+
+.po-cart-button {
+  display: inline-block;
+  padding:0.3em 0.3em;
+  border-radius: 5px;
+  margin: 0.3rem 0.3rem;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+}
+
+.po-cart-button:hover{
+  color:#62c3ff;
+  border-color:#6cfd52;
+  cursor: pointer;
+}
+
+.po-add-cart-button {
+  display: inline-block;
+  padding: 0.3em 0.3em;
+  margin: 0.3rem 0.3rem 0.8rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: #312f2fd7;
+  color: #f5f5f5;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.po-add-cart-button:hover{
+  color:#62c3ff;
+  border-color:#6cfd52;
+  cursor: pointer;
+}
+

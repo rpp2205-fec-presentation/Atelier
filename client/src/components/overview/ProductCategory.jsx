@@ -4,7 +4,7 @@ const ProductCategory = ({ category, name }) => {
   return (
     <section>
       <section id="po-product-categoty" >
-        {category}
+        {`Category > ${category}`}
       </section>
       <section id="po-product-name">
         {name}

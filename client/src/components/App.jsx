@@ -109,7 +109,7 @@ const App = () => {
         <Header toggleMode={toggleMode}/>
       </ErrorBoundary>
       <ErrorBoundary>
-        <Overview productId={product_id} clickTracking={clickTracking} />
+        <Overview productId={product_id} clickTracking={clickTracking} addNewOutfit={addNewOutfit} />
       </ErrorBoundary>
       <ErrorBoundary>
         <RelatedItems

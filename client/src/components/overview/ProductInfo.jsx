@@ -78,6 +78,7 @@ class ProductInfo extends React.Component {
         <ProductCategory category={category} name={name} />
         <ProductPrice price={originalPrice} />
         <ProductStyle id={id} />
+        <hr />
         <ProductDetail slogan={slogan} description={description} />
       </div>
     )
