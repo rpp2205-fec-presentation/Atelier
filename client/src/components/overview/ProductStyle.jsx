@@ -2,6 +2,7 @@ import React from "react";
 import getStyleInfoById from "../helpers/getStyleInfoById.js";
 import SelectedProduct from "./SelectedProduct.jsx";
 import { BiCheckCircle } from 'react-icons/bi';
+import ProductCart from "./ProductCart.jsx";
 
 class ProductStyle extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class ProductStyle extends React.Component {
     this.state = {
       data: [],
       images: [],
+      skus: [],
       defaultStyle: '',
       selectedStyle: '',
     }
@@ -21,6 +23,7 @@ class ProductStyle extends React.Component {
       .then(data => {
         const newDefaultStyle =  data.filter(res => res['default?'] ===  true)['0'];
         var newImages = []
+        var newSkus = []
         var newData = [...this.state.data]
         var newData = [...data]
         data.map((res, idx) => {
@@ -56,15 +59,14 @@ class ProductStyle extends React.Component {
     const { data, images, defaultStyle, selectedStyle } = this.state;
     return (
       <div>
-        {<SelectedProduct selectedStyle={selectedStyle} />}
+        <SelectedProduct selectedStyle={selectedStyle} />
         <div>
-          <h3 id="po-all-style">Style > {selectedStyle.name}</h3>
+          <h3 id="po-all-style">{`Style > ${selectedStyle.name}`}</h3>
           {images.map((img, idx) => {
             if (img === selectedStyle.photos[0].thumbnail_url) {
               return (
-                <div id="po-all-style-photo">
+                <div key={`po_${idx}`} id="po-all-style-photo">
                   <img
-                    key={idx}
                     name={idx}
                     className="po-each-style-photo clickable"
                     onClick={this.stlyeClickhandler}
@@ -75,9 +77,8 @@ class ProductStyle extends React.Component {
               )
             } else {
               return (
-                <div id="po-all-style-photo" >
+                <div key={`po_${idx}`} id="po-all-style-photo" >
                   <img
-                    key={idx}
                     name={idx}
                     className="po-each-style-photo clickable"
                     onClick={this.stlyeClickhandler}
@@ -88,6 +89,7 @@ class ProductStyle extends React.Component {
             }
           })}
         </div>
+        <ProductCart selectedStyle={selectedStyle}/>
       </div>
     )
   }
