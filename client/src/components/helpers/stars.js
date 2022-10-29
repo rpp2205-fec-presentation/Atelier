@@ -13,19 +13,19 @@ const stars = (numOfStars) => {
   }
 
   for(let i = 1; i <= fullStars; i++) {
-    fullRating.push('../images/fullstar.jpeg');
+    fullRating.push('../images/fullstar.png');
   }
 
   if (fracStars >= 0.75) {
-    fullRating.push('../images/threequarterstar.jpeg');
+    fullRating.push('../images/threequarterstar.png');
   } else if (fracStars >= 0.5) {
-    fullRating.push('../images/halfstar.jpeg');
+    fullRating.push('../images/halfstar.png');
   } else if (fracStars >= 0.25) {
-    fullRating.push('../images/quarterstar.jpeg');
+    fullRating.push('../images/quarterstar.png');
   }
 
   for(let i = 1; i <= emptyStars; i++) {
-    fullRating.push('../images/emptystar.jpeg');
+    fullRating.push('../images/emptystar.png');
   }
 
   return (
