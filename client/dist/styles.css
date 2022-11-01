@@ -75,7 +75,7 @@
  }
 
  #outfits, #related-products {
-  margin-top: 50px
+  margin-top: 25px
  }
 
  .ri-action-button {
@@ -253,6 +253,7 @@ td:nth-child(2) {
 
 .po-container {
   padding: 10px;
+  height: 1200px;
 }
 
 .po-product-info > section {
