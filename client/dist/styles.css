@@ -68,7 +68,6 @@
  /* RELATED ITEMS AND COMPARISON FORMATTING */
 
  #related-items-and-comparisons{
-  position: relative;
   margin-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -76,7 +75,7 @@
  }
 
  #outfits, #related-products {
-  margin-top: 50px
+  margin-top: 25px
  }
 
  .ri-action-button {
@@ -213,6 +212,7 @@ td:nth-child(2) {
 
 .carousel-button{
   background-color: white;
+  color: black;
   border-radius: 100%;
   position: absolute;
   opacity: 0.5;
@@ -237,7 +237,6 @@ td:nth-child(2) {
   display: inline-block;
   width: 240px;
   height: 300px;
-  background-color: white;
   border-radius: 10px;
   margin-left: 5px;
   margin-right: 5px;
@@ -254,6 +253,7 @@ td:nth-child(2) {
 
 .po-container {
   padding: 10px;
+  height: 1200px;
 }
 
 .po-product-info > section {
