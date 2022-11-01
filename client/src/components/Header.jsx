@@ -38,7 +38,8 @@ export const LogoCont = styled.div`
 `;
 
 const Logo = styled.img`
-  max-width: 150px;
+  height: 100px;
+  width: 150px;
   margin: auto 25px;
 `;
 
