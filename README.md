@@ -1,7 +1,13 @@
 # Atelier
+
+# Overview
 Project Atelier comprises a complete redesign of the retail portal designed to address this concern and modernize the site.
 
-# Getting Started
+# Table of Contents
+
+# Description
+
+# Installation
 - [ ] Install dependencies: `npm install`
 - [ ] Make a copy of the config-example.js file and rename it config.js.  Update it with an appropriate github token for authentication
 - [ ] Start webpack: `npm run react-dev`
