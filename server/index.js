@@ -8,11 +8,21 @@ const logger = require("./middleware/logger");
 const app = express();
 const port = process.env.PORT;
 
+const options = {
+  etag: true,
+  maxAge: 'no-cache',
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now())
+  }
+}
+
+
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(compression());
 app.use(logger);
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../client/dist', options));
+
 
 app.all('*', (req, res, next) => {
   var endpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/${process.env.CAMPUS_CODE}${req.url}`;
