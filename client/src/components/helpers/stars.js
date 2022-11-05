@@ -31,7 +31,7 @@ const stars = (numOfStars) => {
   return (
     <span>
       {fullRating.map((img, index) => (
-        <img id="starImg" src={img} key={index}></img>
+        <img id="starImg" alt="rating star" src={img} key={index}></img>
       ))}
     </span>
   )

@@ -96,12 +96,12 @@ const ReviewTile = ({ review, reviews, setReviews, productId, sorted }) => {
             photo = { url: photo, key: index}
           }
           return (
-            <ImgThumbnail src={photo.url} key={photo.id} onClick={() => fullSizeModal(photo.url)}/>
+            <ImgThumbnail src={photo.url} alt="review image" key={photo.id} onClick={() => fullSizeModal(photo.url)}/>
           )
         })}
         {fullSize && <ImageModal image={imgToFull} setFullSize={setFullSize} />}
       </div>
-      <h5>{recommended}</h5>
+      <h4>{recommended}</h4>
       <br></br>
       <HelpfulLine>
         Helpful?
