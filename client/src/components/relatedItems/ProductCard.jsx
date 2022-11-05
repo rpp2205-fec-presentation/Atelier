@@ -128,7 +128,7 @@ class ProductCard extends React.Component {
       var productDiv = <div className='product-card' onClick={(e) => {this.takeAction(e)}} style={{backgroundImage:`url(../images/newOutfitButton.jpg)`, backgroundSize:'cover'}}></div>
     } else {
       var productDiv = <div className='product-card' onClick={() => {this.updateProduct()}}>
-        <button className='ri-action-button' onClick={(e) => {this.takeAction(e)}}>
+        <button className='ri-action-button' aria-label='action-button' onClick={(e) => {this.takeAction(e)}}>
           <FontAwesomeIcon icon={this.props.actionButtonIcon} />
         </button>
         <div className='ri-image-block' style={{backgroundImage:`url(${this.state.imgUrl})`, backgroundSize:'cover'}}></div>
