@@ -8,7 +8,7 @@ import Header from './Header.jsx';
 import { reviewsCall, reviewsFilter } from './helpers/reviewsHelpers.js';
 
 const App = () => {
-  const [product_id, setId] = useState(71697);
+  const [product_id, setId] = useState(71851);
   const [pageLoading, setPageLoading] = useState(true);
   const [reviews, setReviews] = useState();
   const [metaData, setMetaData] = useState();
